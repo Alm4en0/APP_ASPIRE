@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.tecsup.prototipo_proyecto.onboarding.ViewPagerFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" >
+        <action
+            android:id="@+id/action_viewPagerFragment_to_inicioActivity"
+            app:destination="@id/inicioActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.tecsup.prototipo_proyecto.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_sesionActivity"
+            app:destination="@id/sesionActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/inicioActivity"
+        android:name="com.tecsup.prototipo_proyecto.InicioActivity"
+        android:label="activity_inicio"
+        tools:layout="@layout/activity_inicio" />
+    <activity
+        android:id="@+id/sesionActivity"
+        android:name="com.tecsup.prototipo_proyecto.SesionActivity"
+        android:label="activity_sesion"
+        tools:layout="@layout/activity_sesion" />
+</navigation>

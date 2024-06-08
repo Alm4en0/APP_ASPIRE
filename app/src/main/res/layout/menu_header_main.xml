@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    android:gravity="bottom"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="8dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/mujer"
+        android:layout_gravity="top"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_gravity="top">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ALMENDRA"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_gravity="center_vertical"/>
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="rebeca.avila@tecsup.edu.pe"
+            android:textSize="10sp"
+            android:layout_gravity="center_vertical"/>
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:text="EDITAR PERFIL"
+            android:textSize="10sp"
+            android:backgroundTint="#2E3C52"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="left
+"
+            />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
