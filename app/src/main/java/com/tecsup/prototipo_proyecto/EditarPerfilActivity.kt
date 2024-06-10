@@ -15,7 +15,6 @@ class EditarPerfilActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_editar_perfil)
         val intent = Intent(this, PerfilActivity::class.java)
-        val intent2 = Intent(this, CertificadosActivity::class.java)
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
         bottomNav.setOnNavigationItemSelectedListener { menuItem ->
@@ -30,8 +29,6 @@ class EditarPerfilActivity : AppCompatActivity() {
                     true
                 }
                 R.id.heart -> {
-                    // Acción para el elemento Heart
-                    startActivity(Intent(this, CertificadosActivity::class.java))
                     true
                 }
                 R.id.gato -> {

@@ -51,7 +51,8 @@ electrónico asociada con su cuenta"
             android:layout_gravity="center"
             android:gravity="center"
             />
-        <TextView
+        <EditText
+            android:id="@+id/editTextCambioCorreo"
             android:layout_width="286dp"
             android:layout_height="48dp"
             android:text="Introducir la dirección de correo electrónico"
@@ -67,6 +68,7 @@ electrónico asociada con su cuenta"
             android:layout_height="wrap_content"
             android:src="@drawable/linealarga"/>
         <Button
+            android:id="@+id/btnOlivdarPantalla2"
             android:layout_width="161dp"
             android:layout_height="64dp"
             android:text="Enviar"

@@ -68,7 +68,6 @@ class PerfilActivity : AppCompatActivity() {
                 R.id.home -> true
                 R.id.circleplay -> true
                 R.id.heart -> {
-                    startActivity(Intent(this, CertificadosActivity::class.java))
                     true
                 }
                 R.id.gato -> {

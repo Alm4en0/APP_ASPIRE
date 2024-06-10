@@ -131,7 +131,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center">
 
-            <TextView
+            <Button
+                android:id="@+id/btnOtroCodigo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -139,9 +140,10 @@
                 android:text="Si no recibiste el código"
                 android:textColor="@color/white"
                 android:textSize="15sp"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                android:backgroundTint="@color/fondo"/>
 
-            <Button
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -154,6 +156,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/btnOlivdarPantalla3"
             android:layout_width="161dp"
             android:layout_height="43dp"
             android:layout_gravity="center"

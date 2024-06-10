@@ -51,14 +51,19 @@
             />
 
 
-        <TextView
-            android:layout_width="275dp"
-            android:layout_height="wrap_content"
+        <Button
+            android:id="@+id/btnOlvidar"
+            android:layout_width="200dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center|right"
+            android:backgroundTint="@color/fondo"
             android:text="¿olvidaste tu contraseña?"
-            android:textSize="13sp"
             android:textColor="#FFFFFF"
-            android:gravity="end"
+            android:textSize="13sp"
+            android:layout_marginRight="70dp"
+
             />
+
         <Button
             android:id="@+id/btnSesionPerfil"
             android:layout_width="274dp"
