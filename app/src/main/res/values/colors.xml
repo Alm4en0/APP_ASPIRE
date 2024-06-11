@@ -2,8 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="fondo">#25364B</color>
+    <color name="fondo">#192C49</color>
     <color name="header">#0D1A2E</color>
     <color name="rojo">#CC0C0C</color>
+    <color name="plomo_claro">#7E7C7C</color>
 
 </resources>

@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SesionActivity"
+    tools:context=".auth.SesionActivity"
     android:background="@color/fondo">
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,6 +26,7 @@
             android:layout_marginTop="20dp"
             />
         <EditText
+            android:id="@+id/edtCorreo"
             android:layout_width="275dp"
             android:layout_height="45dp"
             android:layout_marginTop="10dp"
@@ -42,6 +43,7 @@
             android:textStyle="bold"
             android:layout_marginTop="15dp"/>
         <EditText
+            android:id="@+id/edtContrasena"
             android:layout_width="275dp"
             android:layout_height="45dp"
             android:layout_marginTop="10dp"
@@ -53,14 +55,14 @@
 
         <Button
             android:id="@+id/btnOlvidar"
-            android:layout_width="200dp"
+            android:layout_width="250dp"
             android:layout_height="36dp"
             android:layout_gravity="center|right"
             android:backgroundTint="@color/fondo"
             android:text="¿olvidaste tu contraseña?"
             android:textColor="#FFFFFF"
             android:textSize="13sp"
-            android:layout_marginRight="70dp"
+            android:layout_marginRight="30dp"
 
             />
 
@@ -69,6 +71,7 @@
             android:layout_width="274dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#2E3C52"
+            android:textColor="@color/white"
             android:text="Inciar sesión"
             android:layout_marginTop="20dp"/>
         <LinearLayout

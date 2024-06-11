@@ -47,4 +47,10 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     implementation("com.github.bumptech.glide:glide:4.16.0")
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.squareup.retrofit)
+    implementation(libs.squareup.retrofit.converter)
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.android)
+    implementation(libs.androidx.lifecycle.viewmodel)
+    implementation(libs.androidx.lifecycle.livedata)
 }

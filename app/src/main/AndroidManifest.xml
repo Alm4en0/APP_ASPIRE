@@ -16,16 +16,12 @@
         android:theme="@style/Theme.Prototipoproyecto"
         tools:targetApi="31">
         <activity
+            android:name=".auth.SesionActivity"/>
+        <activity
             android:name=".Recuperacion2Activity"
             android:exported="false" />
         <activity
             android:name=".Recuperacion1Activity"
-            android:exported="false" />
-        <activity
-            android:name=".CusroActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CertificadosActivity"
             android:exported="false" />
         <activity
             android:name=".DetallesPersonaActivity"
@@ -36,15 +32,8 @@
         <activity
             android:name=".PerfilActivity"
             android:exported="false" />
-        <activity
-            android:name=".SesionActivity"
-            android:exported="false" />
+
         <activity android:name=".InicioActivity" />
-
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".SesionActivity" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
