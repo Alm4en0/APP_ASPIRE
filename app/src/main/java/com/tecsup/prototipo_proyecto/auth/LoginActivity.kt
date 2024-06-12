@@ -26,28 +26,22 @@ class LoginActivity : AppCompatActivity() {
         val btnLogin = findViewById<Button>(R.id.btnSesionPerfil)
 
         btnLogin.setOnClickListener {
-            val correo = edtCorreo.text.toString()
-            val contrasena = edtContrasena.text.toString()
+            val correo = edtCorreo.text.toString().trim()
+            val contrasena = edtContrasena.text.toString().trim()
 
-            // Logging the input values for debugging
             Log.d("LoginActivity", "Correo: $correo, Contraseña: $contrasena")
 
             userViewModel.login(correo, contrasena)
         }
 
-        val btnOlvidar= findViewById<Button>(R.id.btnOlvidar)
+        val btnOlvidar = findViewById<Button>(R.id.btnOlvidar)
         btnOlvidar.setOnClickListener {
             val intent = Intent(this, Recuperacion1Activity::class.java)
             startActivity(intent)
         }
 
-        // Observe errors and client data
-        userViewModel.userLoginError.observe(this) { error ->
-            if (error) {
-                val errorMessage = userViewModel.userLoginMsgError.value
-                Log.e("LoginActivity", "Error: $errorMessage")
-                Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
-            }
+        userViewModel.userLoginMsgError.observe(this) { errorMessage ->
+            errorMessage?.let { showErrorMessage(it) }
         }
 
         userViewModel.cliente.observe(this) { usuario ->
@@ -58,10 +52,12 @@ class LoginActivity : AppCompatActivity() {
         }
 
         userViewModel.error.observe(this) { error ->
-            error?.let {
-                Log.e("LoginActivity", "Login error: $error")
-                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
-            }
+            error?.let { showErrorMessage(it) }
         }
+    }
+
+    private fun showErrorMessage(message: String) {
+        Log.e("LoginActivity", "Error: $message")
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

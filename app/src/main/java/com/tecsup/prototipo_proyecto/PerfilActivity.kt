@@ -16,9 +16,18 @@ import com.tecsup.prototipo_proyecto.notasViendoHorizontal.NotaHorizontal
 import com.tecsup.prototipo_proyecto.notasViendoHorizontal.NotasAdapterHorizontal
 
 class PerfilActivity : AppCompatActivity() {
+
+    private var currentScreen: Int? = null
+
+    companion object {
+        const val HOME_SCREEN = 0
+        const val PLAY_SCREEN = 1
+        const val FAVORITE_SCREEN = 2
+        const val PROFILE_SCREEN = 3
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_perfil)
+        setContentView(R.layout.activity_perfil)
 
         val recyclerNotas = findViewById<RecyclerView>(R.id.recyclerNotasViendo)
         val listNotas = listOf(
@@ -31,21 +40,41 @@ class PerfilActivity : AppCompatActivity() {
         )
         val adapter = NotasAdapterViendo(listNotas)
         recyclerNotas.adapter = adapter
-        recyclerNotas.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
+        recyclerNotas.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         // Content 2
         val recyclerNotasHorizontal = findViewById<RecyclerView>(R.id.recyclerNotasViendoHorizontal)
         val listNotas2 = listOf(
-            NotaHorizontal("Diseño de Interfaces", "https://img.freepik.com/fotos-premium/casa-mano-humana-fondo_488220-5956.jpg?w=996"),
-            NotaHorizontal("Diseño de Interfaces", "https://img.freepik.com/fotos-premium/casa-mano-humana-fondo_488220-5956.jpg?w=996"),
-            NotaHorizontal("Diseño de Interfaces", "https://img.freepik.com/fotos-premium/casa-mano-humana-fondo_488220-5956.jpg?w=996"),
-            NotaHorizontal("Diseño de Interfaces", "https://img.freepik.com/fotos-premium/casa-mano-humana-fondo_488220-5956.jpg?w=996"),
-            NotaHorizontal("Diseño de Interfaces", "https://img.freepik.com/fotos-premium/casa-mano-humana-fondo_488220-5956.jpg?w=996"),
-            NotaHorizontal("Diseño de Interfaces", "https://img.freepik.com/fotos-premium/casa-mano-humana-fondo_488220-5956.jpg?w=996")
+            NotaHorizontal(
+                "Diseño de Interfaces",
+                "https://img.freepik.com/fotos-premium/casa-mano-humana-fondo_488220-5956.jpg?w=996"
+            ),
+            NotaHorizontal(
+                "Diseño de Interfaces",
+                "https://img.freepik.com/fotos-premium/casa-mano-humana-fondo_488220-5956.jpg?w=996"
+            ),
+            NotaHorizontal(
+                "Diseño de Interfaces",
+                "https://img.freepik.com/fotos-premium/casa-mano-humana-fondo_488220-5956.jpg?w=996"
+            ),
+            NotaHorizontal(
+                "Diseño de Interfaces",
+                "https://img.freepik.com/fotos-premium/casa-mano-humana-fondo_488220-5956.jpg?w=996"
+            ),
+            NotaHorizontal(
+                "Diseño de Interfaces",
+                "https://img.freepik.com/fotos-premium/casa-mano-humana-fondo_488220-5956.jpg?w=996"
+            ),
+            NotaHorizontal(
+                "Diseño de Interfaces",
+                "https://img.freepik.com/fotos-premium/casa-mano-humana-fondo_488220-5956.jpg?w=996"
+            )
         )
         val adapter2 = NotasAdapterHorizontal(listNotas2)
         recyclerNotasHorizontal.adapter = adapter2
-        recyclerNotasHorizontal.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerNotasHorizontal.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         //Recycler Categorias
         val recyclerCategorias = findViewById<RecyclerView>(R.id.recyclerCategorias)
@@ -60,22 +89,50 @@ class PerfilActivity : AppCompatActivity() {
 
         val adapterCategoria = CategoriaAdapter(listCategorias)
         recyclerCategorias.adapter = adapterCategoria
-        recyclerCategorias.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
+        recyclerCategorias.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        currentScreen = HOME_SCREEN
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNav.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.home -> true
-                R.id.circleplay -> true
+                R.id.home -> {
+                    currentScreen = HOME_SCREEN
+                    updateBottomNavigation(bottomNav)
+                    true
+                }
+
+                R.id.circleplay -> {
+                    currentScreen = PLAY_SCREEN
+                    updateBottomNavigation(bottomNav)
+                    true
+                }
+
                 R.id.heart -> {
+                    currentScreen = FAVORITE_SCREEN
+                    updateBottomNavigation(bottomNav)
                     true
                 }
+
                 R.id.gato -> {
-                    startActivity(Intent(this, EditarPerfilActivity::class.java))
+                    val intent = Intent(this, EditarPerfilActivity::class.java)
+                    intent.putExtra("currentScreen", PROFILE_SCREEN)
+                    startActivity(intent)
+                    currentScreen = PROFILE_SCREEN
+                    updateBottomNavigation(bottomNav)
                     true
                 }
+
                 else -> false
             }
         }
+        updateBottomNavigation(bottomNav)
+
     }
-}
+
+        private fun updateBottomNavigation(bottomNav: BottomNavigationView) {
+            bottomNav.menu.getItem(currentScreen ?: 0).isChecked = true
+            bottomNav.menu.getItem(currentScreen ?: 0).isEnabled = false
+        }
+    }
