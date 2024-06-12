@@ -1,10 +1,8 @@
-package com.tecsup.prototipo_proyecto.CursoAdapter
+package com.tecsup.prototipo_proyecto.curso
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.tecsup.prototipo_proyecto.Curso.Curso
-import com.tecsup.prototipo_proyecto.CursoViewHolder.CursoViewHolder
 
 
 class CursoAdapter (val list:List<Curso>): RecyclerView.Adapter<CursoViewHolder>(){

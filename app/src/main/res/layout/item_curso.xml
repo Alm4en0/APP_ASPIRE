@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="290dp"
+    android:layout_height="87dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    app:cardCornerRadius="10dp"
+    android:layout_marginTop="15dp">
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="47dp"
+        android:layout_gravity="center|right"
+        android:src="@drawable/lupa"/>
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center|left"
+        android:orientation="vertical"
+        android:layout_marginLeft="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            >
+            <TextView
+                android:id="@+id/txtNumeroCurso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Curso1"
+                android:textSize="9sp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/txtTiempo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10000000000"
+                android:textSize="9sp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="50dp"
+                android:textColor="@color/design_default_color_error"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp">
+            <TextView
+                android:id="@+id/txtTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="Titulo1"
+                android:textColor="@color/black"
+                android:textSize="12sp"/>
+            <TextView
+                android:id="@+id/txtDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla interdum."
+                android:textSize="9sp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

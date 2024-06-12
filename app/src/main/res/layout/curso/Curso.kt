@@ -1,4 +1,4 @@
-package com.tecsup.prototipo_proyecto.Curso
+package com.tecsup.prototipo_proyecto.curso
 
 data class Curso (
     val tituloCurso:String,

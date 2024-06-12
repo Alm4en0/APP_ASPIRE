@@ -1,10 +1,9 @@
-package com.tecsup.prototipo_proyecto.CursoViewHolder
+package com.tecsup.prototipo_proyecto.curso
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.tecsup.prototipo_proyecto.Curso.Curso
 import com.tecsup.prototipo_proyecto.R
 
 class CursoViewHolder (inflater: LayoutInflater, parent: ViewGroup):
