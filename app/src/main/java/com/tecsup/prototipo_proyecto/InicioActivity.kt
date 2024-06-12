@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.tecsup.prototipo_proyecto.auth.SesionActivity
+import com.tecsup.prototipo_proyecto.auth.LoginActivity
 
 class InicioActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,7 +12,7 @@ class InicioActivity : AppCompatActivity() {
         setContentView(R.layout.activity_inicio)
         val btnInicioSesion = findViewById<Button>(R.id.btnInicioSesion)
         btnInicioSesion.setOnClickListener {
-            val intent = Intent(this, SesionActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 

@@ -50,12 +50,12 @@ class PerfilActivity : AppCompatActivity() {
         //Recycler Categorias
         val recyclerCategorias = findViewById<RecyclerView>(R.id.recyclerCategorias)
         val listCategorias = listOf(
-            Categoria("Finanzas", "https://img.icons8.com/?size=100&id=PQbGFaMhP8Ox&format=png&color=000000"),
-            Categoria("Desarrollo Personal", "https://img.icons8.com/?size=100&id=PQbGFaMhP8Ox&format=png&color=000000"),
-            Categoria("Bienes Raizes", "https://img.icons8.com/?size=100&id=PQbGFaMhP8Ox&format=png&color=000000"),
-            Categoria("Finanzas", "https://img.icons8.com/?size=100&id=PQbGFaMhP8Ox&format=png&color=000000"),
-            Categoria("Finanzas", "https://img.icons8.com/?size=100&id=PQbGFaMhP8Ox&format=png&color=000000"),
-            Categoria("Finanzas", "https://img.icons8.com/?size=100&id=PQbGFaMhP8Ox&format=png&color=000000"),
+            Categoria("Finanzas"),
+            Categoria("Desarrollo Personal"),
+            Categoria("Bienes Raizes"),
+            Categoria("Finanzas"),
+            Categoria("Finanzas"),
+            Categoria("Finanzas"),
         )
 
         val adapterCategoria = CategoriaAdapter(listCategorias)

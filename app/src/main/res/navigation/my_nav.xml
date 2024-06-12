@@ -23,7 +23,7 @@
             android:id="@+id/action_splashFragment_to_viewPagerFragment"
             app:destination="@id/viewPagerFragment" />
         <action
-            android:id="@+id/action_splashFragment_to_sesionActivity"
+            android:id="@+id/action_splashFragment_to_sesionActivity2"
             app:destination="@id/sesionActivity" />
     </fragment>
     <activity

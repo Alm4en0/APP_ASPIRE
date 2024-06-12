@@ -12,16 +12,13 @@ class CategoriaViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     RecyclerView.ViewHolder(inflater.inflate(R.layout.item_categoria, parent, false)) {
 
     private var txtNombreCategoria : TextView? = null
-    private var imgCategoria: ImageView? = null
 
     init {
-        txtNombreCategoria= itemView.findViewById(R.id.txtNombreCategoria)
-        imgCategoria = itemView.findViewById(R.id.imgCategoria)
+        txtNombreCategoria= itemView.findViewById(R.id.btnCategoria)
 
     }
 
     fun data(categoria: Categoria) {
         txtNombreCategoria?.text = categoria.nombre
-        Glide.with(imgCategoria!!.context).load(categoria.img).into(imgCategoria!!)
     }
 }

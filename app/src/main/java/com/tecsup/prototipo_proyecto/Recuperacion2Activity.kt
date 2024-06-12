@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.tecsup.prototipo_proyecto.auth.SesionActivity
+import com.tecsup.prototipo_proyecto.auth.LoginActivity
 
 class Recuperacion2Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,7 +14,7 @@ class Recuperacion2Activity : AppCompatActivity() {
         setContentView(R.layout.activity_recuperacion2)
         val btnOlivdarPantalla3= findViewById<Button>(R.id.btnOlivdarPantalla3)
         btnOlivdarPantalla3.setOnClickListener {
-            val intent = Intent(this,SesionActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }

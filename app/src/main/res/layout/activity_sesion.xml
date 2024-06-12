@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".auth.SesionActivity"
+    tools:context=".auth.LoginActivity"
     android:background="@color/fondo">
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,6 +30,8 @@
             android:layout_width="275dp"
             android:layout_height="45dp"
             android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:maxLines="1"
             android:background="@drawable/rounded_corners"
             android:padding="10dp"
             android:textSize="15sp"
@@ -47,6 +49,8 @@
             android:layout_width="275dp"
             android:layout_height="45dp"
             android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:maxLines="1"
             android:background="@drawable/rounded_corners"
             android:padding="10dp"
             android:textSize="15sp"
@@ -56,7 +60,7 @@
         <Button
             android:id="@+id/btnOlvidar"
             android:layout_width="250dp"
-            android:layout_height="36dp"
+            android:layout_height="38dp"
             android:layout_gravity="center|right"
             android:backgroundTint="@color/fondo"
             android:text="¿olvidaste tu contraseña?"
