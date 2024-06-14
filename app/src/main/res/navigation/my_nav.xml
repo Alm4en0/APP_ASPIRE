@@ -23,7 +23,7 @@
             android:id="@+id/action_splashFragment_to_viewPagerFragment"
             app:destination="@id/viewPagerFragment" />
         <action
-            android:id="@+id/action_splashFragment_to_sesionActivity2"
+            android:id="@+id/action_splashFragment_to_sesionActivity"
             app:destination="@id/sesionActivity" />
     </fragment>
     <activity
@@ -33,7 +33,7 @@
         tools:layout="@layout/activity_inicio" />
     <activity
         android:id="@+id/sesionActivity"
-        android:name="com.tecsup.prototipo_proyecto.SesionActivity"
+        android:name="com.tecsup.prototipo_proyecto.LoginActivity"
         android:label="activity_sesion"
         tools:layout="@layout/activity_sesion" />
 </navigation>

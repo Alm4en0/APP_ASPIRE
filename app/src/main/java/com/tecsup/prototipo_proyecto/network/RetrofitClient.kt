@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitClient {
 
-    private val URL_BASE = "http://192.168.101.73:8000/api/"
+    private val URL_BASE = "https://jellyfish-app-olbh8.ondigitalocean.app/api/"
 
     val retrofit = Retrofit.Builder()
         .baseUrl(URL_BASE)

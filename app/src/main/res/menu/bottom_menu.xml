@@ -3,22 +3,22 @@
 
     <item
         android:id="@+id/home"
-        android:title="Profile"
+        android:title="Inicio"
         android:icon="@drawable/home"/>
 
     <item
         android:id="@+id/circleplay"
-        android:title="Profile"
+        android:title="Cursos"
         android:icon="@drawable/circleplay"
         />
 
     <item
         android:id="@+id/heart"
-        android:title="Profile"
+        android:title="Favoritos"
         android:icon="@drawable/heart"/>
     <item
         android:id="@+id/gato"
-        android:title="Profile"
+        android:title="Perfil"
         android:icon="@drawable/gato"
         />
 

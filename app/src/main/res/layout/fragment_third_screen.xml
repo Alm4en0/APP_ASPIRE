@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".onboarding.screens.PrimerScreen">
+    tools:context=".onboarding.screens.PrimerScreen"
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -28,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageView3"
         android:textAlignment="center"
-        android:text="AVANZA HACIA EL ÉXITO CERTIFICADO"/>
+        android:text="AVANZA HACIA EL ÉXITO"/>
 
     <TextView
         android:id="@+id/description3"
@@ -43,7 +44,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:textAlignment="center"
-        android:text="Impulsa tu crecimiento con cursos garantizados y certificados" />
+        android:text="Impulsa tu crecimiento personal y profesional" />
 
     <Button
         android:id="@+id/btnFinalizar"

@@ -1,4 +1,5 @@
-package com.tecsup.prototipo_proyecto.auth
+package com.tecsup.prototipo_proyecto
+
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,9 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.tecsup.prototipo_proyecto.PerfilActivity
-import com.tecsup.prototipo_proyecto.R
-import com.tecsup.prototipo_proyecto.Recuperacion1Activity
+import com.tecsup.prototipo_proyecto.auth.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var userViewModel: LoginViewModel
