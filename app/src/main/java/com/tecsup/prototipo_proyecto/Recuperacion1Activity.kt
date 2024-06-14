@@ -6,6 +6,7 @@ import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.tecsup.prototipo_proyecto.auth.LoginActivity
 
 class Recuperacion1Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

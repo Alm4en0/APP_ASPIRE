@@ -1,26 +1,41 @@
-package com.tecsup.prototipo_proyecto
+package com.tecsup.prototipo_proyecto.curso
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.tecsup.prototipo_proyecto.curso.CursoActivity
+import com.tecsup.prototipo_proyecto.EditarPerfilActivity
+import com.tecsup.prototipo_proyecto.HomeActivity
+import com.tecsup.prototipo_proyecto.R
 
-class EditarPerfilActivity : AppCompatActivity() {
+class CursoActivity : AppCompatActivity() {
+
     private var currentScreen: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_editar_perfil)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_cursos)
 
         // Recuperar el valor de currentScreen desde el Intent
         currentScreen = intent.getIntExtra("currentScreen", -1)
 
+        // Configuración del BottomNavigationView
+        setupBottomNavigationView()
+
+        // Configuración del RecyclerView de cursos
+        setupRecyclerView()
+    }
+
+    private fun setupBottomNavigationView() {
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNav.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home -> {
-                    startActivity(Intent(this@EditarPerfilActivity, HomeActivity::class.java))
+                    startActivity(Intent(this@CursoActivity, HomeActivity::class.java))
                     currentScreen = HomeActivity.HOME_SCREEN
                     updateBottomNavigation(bottomNav)
                     true
@@ -50,6 +65,21 @@ class EditarPerfilActivity : AppCompatActivity() {
             }
         }
         updateBottomNavigation(bottomNav)
+    }
+
+    private fun setupRecyclerView() {
+        val recyclerNotas = findViewById<RecyclerView>(R.id.reciclerCurso)
+
+        val listNotas = listOf(
+            Curso("Certificado1", "Descripción 1", "1520", "Curso2"),
+            Curso("Certificado2", "Descripción 2", "1520", "Curso2"),
+            Curso("Certificado3", "Descripción 3", "1520", "Curso2"),
+            Curso("Certificado4", "Descripción 4", "1520", "Curso2")
+        )
+
+        val adapter = CursoAdapter(listNotas)
+        recyclerNotas.adapter = adapter
+        recyclerNotas.layoutManager = GridLayoutManager(this, 1)
     }
 
     private fun updateBottomNavigation(bottomNav: BottomNavigationView) {

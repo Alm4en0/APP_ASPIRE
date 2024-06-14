@@ -3,25 +3,24 @@ package com.tecsup.prototipo_proyecto
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.tecsup.prototipo_proyecto.R.layout.activity_perfil
 import com.tecsup.prototipo_proyecto.categorias.Categoria
 import com.tecsup.prototipo_proyecto.categorias.CategoriaAdapter
+import com.tecsup.prototipo_proyecto.curso.CursoActivity
 import com.tecsup.tecsupapp.notas.NotaViendo
 import com.tecsup.tecsupapp.notas.NotasAdapterViendo
 import com.tecsup.prototipo_proyecto.notasViendoHorizontal.NotaHorizontal
 import com.tecsup.prototipo_proyecto.notasViendoHorizontal.NotasAdapterHorizontal
 
-class PerfilActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
 
     private var currentScreen: Int? = null
 
     companion object {
         const val HOME_SCREEN = 0
-        const val PLAY_SCREEN = 1
+        const val COURSE_SCREEN = 1
         const val FAVORITE_SCREEN = 2
         const val PROFILE_SCREEN = 3
     }
@@ -104,7 +103,10 @@ class PerfilActivity : AppCompatActivity() {
                 }
 
                 R.id.circleplay -> {
-                    currentScreen = PLAY_SCREEN
+                    val intent = Intent(this, CursoActivity::class.java)
+                    intent.putExtra("currentScreen", COURSE_SCREEN)
+                    startActivity(intent)
+                    currentScreen = COURSE_SCREEN
                     updateBottomNavigation(bottomNav)
                     true
                 }

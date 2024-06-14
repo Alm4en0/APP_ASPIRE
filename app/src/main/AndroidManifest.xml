@@ -28,22 +28,18 @@
         <activity
             android:name=".EditarPerfilActivity"
             android:exported="false" />
-        <activity
-            android:name=".PerfilActivity"
-            android:exported="false" />
-        <activity android:name=".LoginActivity"
+
+        <activity android:name=".auth.LoginActivity"
             android:exported="false"/>
 
         <activity android:name=".InicioActivity" />
 
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value=".LoginActivity" />
-
-        <activity android:name=".auth.LoginActivity" />
+            android:value=".auth.LoginActivity" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

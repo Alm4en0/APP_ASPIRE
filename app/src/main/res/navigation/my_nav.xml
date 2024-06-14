@@ -33,7 +33,7 @@
         tools:layout="@layout/activity_inicio" />
     <activity
         android:id="@+id/sesionActivity"
-        android:name="com.tecsup.prototipo_proyecto.LoginActivity"
+        android:name="com.tecsup.prototipo_proyecto.auth.LoginActivity"
         android:label="activity_sesion"
         tools:layout="@layout/activity_sesion" />
 </navigation>

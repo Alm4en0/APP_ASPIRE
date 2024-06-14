@@ -1,4 +1,4 @@
-package com.tecsup.prototipo_proyecto
+package com.tecsup.prototipo_proyecto.auth
 
 
 import android.content.Intent
@@ -9,7 +9,9 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.tecsup.prototipo_proyecto.auth.LoginViewModel
+import com.tecsup.prototipo_proyecto.HomeActivity
+import com.tecsup.prototipo_proyecto.R
+import com.tecsup.prototipo_proyecto.Recuperacion1Activity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var userViewModel: LoginViewModel
@@ -46,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
         userViewModel.cliente.observe(this) { usuario ->
             usuario?.let {
                 Log.d("LoginActivity", "Login successful, navigating to PerfilActivity")
-                startActivity(Intent(this, PerfilActivity::class.java))
+                startActivity(Intent(this, HomeActivity::class.java))
             }
         }
 
