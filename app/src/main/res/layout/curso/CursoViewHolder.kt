@@ -1,4 +1,4 @@
-package com.tecsup.prototipo_proyecto.curso
+package com.tecsup.prototipo_proyecto.cursos
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -23,7 +23,7 @@ class CursoViewHolder (inflater: LayoutInflater, parent: ViewGroup):
 
     }
 
-    fun data(nota: Curso){
+    fun data(nota: Curso1){
         txtTitulo?.text = nota.tituloCurso
         txtTiempo?.text = nota.tiempo
         txtnumeroCurso?.text = nota.numeroCurso

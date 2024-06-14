@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.tecsup.prototipo_proyecto.curso.CursoActivity
+import com.tecsup.prototipo_proyecto.cursos.CursoActivity
 
 class EditarPerfilActivity : AppCompatActivity() {
     private var currentScreen: Int? = null

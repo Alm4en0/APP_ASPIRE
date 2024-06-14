@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.tecsup.prototipo_proyecto.categorias.Categoria
 import com.tecsup.prototipo_proyecto.categorias.CategoriaAdapter
-import com.tecsup.prototipo_proyecto.curso.CursoActivity
+import com.tecsup.prototipo_proyecto.cursos.CursoActivity
 import com.tecsup.tecsupapp.notas.NotaViendo
 import com.tecsup.tecsupapp.notas.NotasAdapterViendo
 import com.tecsup.prototipo_proyecto.notasViendoHorizontal.NotaHorizontal
@@ -26,7 +26,10 @@ class HomeActivity : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_perfil)
+        setContentView(R.layout.activity_home)
+
+        // Hide the ActionBar
+        supportActionBar?.hide()
 
         val recyclerNotas = findViewById<RecyclerView>(R.id.recyclerNotasViendo)
         val listNotas = listOf(

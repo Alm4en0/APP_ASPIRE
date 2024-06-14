@@ -1,4 +1,4 @@
-package com.tecsup.prototipo_proyecto.curso
+package com.tecsup.prototipo_proyecto.cursos
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,14 +11,17 @@ import com.tecsup.prototipo_proyecto.EditarPerfilActivity
 import com.tecsup.prototipo_proyecto.HomeActivity
 import com.tecsup.prototipo_proyecto.R
 
-class CursoActivity : AppCompatActivity() {
-
+class CursoActivity : AppCompatActivity(){
     private var currentScreen: Int? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_cursos)
+
+        // Configuración del ActionBar
+        val actionBar = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.title = "Mis Cursos"
 
         // Recuperar el valor de currentScreen desde el Intent
         currentScreen = intent.getIntExtra("currentScreen", -1)
@@ -71,13 +74,17 @@ class CursoActivity : AppCompatActivity() {
         val recyclerNotas = findViewById<RecyclerView>(R.id.reciclerCurso)
 
         val listNotas = listOf(
-            Curso("Certificado1", "Descripción 1", "1520", "Curso2"),
-            Curso("Certificado2", "Descripción 2", "1520", "Curso2"),
-            Curso("Certificado3", "Descripción 3", "1520", "Curso2"),
-            Curso("Certificado4", "Descripción 4", "1520", "Curso2")
+            Curso1("Certificado1", "Descripción 1", "1520", "Curso2"),
+            Curso1("Certificado2", "Descripción 2", "1520", "Curso2"),
+            Curso1("Certificado3", "Descripción 3", "1520", "Curso2"),
+            Curso1("Certificado4", "Descripción 4", "1520", "Curso2"),
+            Curso1("Certificado1", "Descripción 1", "1520", "Curso2"),
+            Curso1("Certificado2", "Descripción 2", "1520", "Curso2"),
+            Curso1("Certificado3", "Descripción 3", "1520", "Curso2"),
+            Curso1("Certificado4", "Descripción 4", "1520", "Curso2")
         )
 
-        val adapter = CursoAdapter(listNotas)
+        val adapter = Curso1Adapter(listNotas)
         recyclerNotas.adapter = adapter
         recyclerNotas.layoutManager = GridLayoutManager(this, 1)
     }

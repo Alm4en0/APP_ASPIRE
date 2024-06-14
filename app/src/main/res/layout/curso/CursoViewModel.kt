@@ -1,4 +1,4 @@
-package com.tecsup.prototipo_proyecto.curso
+package com.tecsup.prototipo_proyecto.cursos
 
 class CursoViewModel {
 }

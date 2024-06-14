@@ -1,10 +1,8 @@
-package com.tecsup.prototipo_proyecto.curso
+package com.tecsup.prototipo_proyecto.cursos
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tecsup.prototipo_proyecto.R
@@ -17,10 +15,10 @@ class CursosActivity : AppCompatActivity() {
         val recyclerNotas = findViewById<RecyclerView>(R.id.reciclerCurso)
 
         val listNotas = listOf(
-            Curso("Certificado1","asdasdasdasdasdasdasd","1520","Curso2"),
-            Curso("Certificado2","asdasdasdasdasdasdasd","1520","Curso2"),
-            Curso("Certificado3","asdasdasdasdasdasdasd","1520","Curso2"),
-            Curso("Certificado4","asdasdasdasdasdasdasd","1520","Curso2"),
+            Curso1("Certificado1","asdasdasdasdasdasdasd","1520","Curso2"),
+            Curso1("Certificado2","asdasdasdasdasdasdasd","1520","Curso2"),
+            Curso1("Certificado3","asdasdasdasdasdasdasd","1520","Curso2"),
+            Curso1("Certificado4","asdasdasdasdasdasdasd","1520","Curso2"),
 
 
 

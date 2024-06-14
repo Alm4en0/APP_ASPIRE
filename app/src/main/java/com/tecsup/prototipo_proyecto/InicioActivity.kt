@@ -10,6 +10,10 @@ class InicioActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio)
+
+        // Hide the ActionBar
+        supportActionBar?.hide()
+
         val btnInicioSesion = findViewById<Button>(R.id.btnInicioSesion)
         btnInicioSesion.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)

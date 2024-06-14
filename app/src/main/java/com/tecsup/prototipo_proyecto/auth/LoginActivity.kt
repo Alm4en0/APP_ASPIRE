@@ -20,6 +20,9 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sesion)
 
+        // Hide the ActionBar
+        supportActionBar?.hide()
+
         userViewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
         val edtCorreo = findViewById<EditText>(R.id.edtCorreo)
