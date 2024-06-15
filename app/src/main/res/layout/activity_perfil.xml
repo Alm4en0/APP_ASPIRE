@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fondo"
@@ -28,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="almengarcia@gmail.com"
-        android:textColor="@color/plomo_claro"
+        android:textColor="@color/plomo_claro2"
         android:textSize="14sp" />
 
     <Button
@@ -42,72 +44,139 @@
         android:textSize="9sp"
         android:textStyle="bold" />
 
-    <View
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/plomo_claro"/>
-
-    <!-- Recursos -->
-    <TextView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:drawableStart="@drawable/ic_download"
-        android:drawablePadding="8dp"
-        android:text="Descargar recursos"
-        android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:orientation="vertical"
+        android:layout_gravity="start"
+        android:layout_margin="26dp"
+        android:gravity="start">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/plomo_claro" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/plomo_claro"/>
 
-    <!-- Información y compartir -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:drawableStart="@drawable/ic_info"
-        android:drawablePadding="8dp"
-        android:text="Acerca de ASPIRE"
-        android:textColor="@color/white"
-        android:textSize="16sp" />
+        <!-- Recursos -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="8dp"
+            android:text="Recursos"
+            android:textColor="@color/plomo_claro2"
+            android:textSize="13sp"
+            android:background=""/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:drawableStart="@drawable/ic_web"
-        android:drawablePadding="8dp"
-        android:text="Página web"
-        android:textColor="@color/white"
-        android:textSize="16sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:drawableStart="@drawable/ic_share"
-        android:drawablePadding="8dp"
-        android:text="Compartir la aplicación"
-        android:textColor="@color/white"
-        android:textSize="16sp" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="3"
+                android:drawableStart="@drawable/icon_downloand"
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/plomo_claro"
+                android:gravity="start|center_vertical"
+                android:text="Descargar recursos"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/light_gray" />
+            <ImageButton
+                android:id="@+id/imbFlecha1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="end"
+                android:background="@color/fondo"
+                android:src="@drawable/icon_flecha_adelante"
+                android:padding="8dp"
+                app:tint="@color/white"
+                android:backgroundTint="@android:color/transparent"/>
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/plomo_claro" />
+
+        <!-- Información y compartir -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="8dp"
+            android:text="Información y Compartir"
+            android:textColor="@color/plomo_claro2"
+            android:textSize="13sp"
+            android:background=""/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="3"
+                android:gravity="start|center_vertical"
+                android:drawableStart="@drawable/icon_downloand"
+                android:drawableTint="@color/plomo_claro"
+                android:drawablePadding="8dp"
+                android:text="Acerca de ASPIRE"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="15sp"/>
+
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="end"
+                android:background="@color/fondo"
+                android:src="@drawable/ich"
+                android:padding="8dp"
+                app:tint="@color/white"
+                android:backgroundTint="@android:color/transparent"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/flecha_atras"
+            android:drawablePadding="8dp"
+            android:text="Página web"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/flecha_atras"
+            android:drawablePadding="8dp"
+            android:text="Compartir la aplicación"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="24dp"
-        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/rojo"
         android:text="CERRAR SESIÓN"
         android:textColor="@color/white"
         android:textSize="16sp"

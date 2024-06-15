@@ -19,7 +19,8 @@
     <item
         android:id="@+id/gato"
         android:title="Perfil"
-        android:icon="@drawable/gato"
+        android:iconTint="@color/white"
+        android:icon="@drawable/icon_perfil"
         />
 
 </menu>
