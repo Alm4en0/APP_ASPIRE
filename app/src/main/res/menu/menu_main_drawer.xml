@@ -20,7 +20,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_profesores"
-            android:icon="@drawable/help"
+            android:icon="@drawable/icono_help"
             android:title="Acerca de ASPIRE" />
         <item
             android:id="@+id/nav_estudiantes"

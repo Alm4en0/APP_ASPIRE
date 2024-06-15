@@ -121,7 +121,7 @@ class HomeActivity : AppCompatActivity() {
                 }
 
                 R.id.gato -> {
-                    val intent = Intent(this, EditarPerfilActivity::class.java)
+                    val intent = Intent(this, PerfilActivity::class.java)
                     intent.putExtra("currentScreen", PROFILE_SCREEN)
                     startActivity(intent)
                     currentScreen = PROFILE_SCREEN

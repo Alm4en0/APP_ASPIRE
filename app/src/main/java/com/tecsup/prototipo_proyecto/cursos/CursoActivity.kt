@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.tecsup.prototipo_proyecto.EditarPerfilActivity
 import com.tecsup.prototipo_proyecto.HomeActivity
+import com.tecsup.prototipo_proyecto.PerfilActivity
 import com.tecsup.prototipo_proyecto.R
 
 class CursoActivity : AppCompatActivity(){
@@ -57,7 +58,7 @@ class CursoActivity : AppCompatActivity(){
                     true
                 }
                 R.id.gato -> {
-                    val intent = Intent(this, EditarPerfilActivity::class.java)
+                    val intent = Intent(this, PerfilActivity::class.java)
                     intent.putExtra("currentScreen", HomeActivity.PROFILE_SCREEN)
                     startActivity(intent)
                     currentScreen = HomeActivity.PROFILE_SCREEN
