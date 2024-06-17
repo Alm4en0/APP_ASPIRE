@@ -7,14 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".cursos.CursoActivity"
     android:background="@color/fondo">
-    
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarCursos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/Theme.Prototipoproyecto"
         android:background="@color/header"
-        app:title="Mis Cursos"
+        app:title="Nombre Curso"
         app:titleTextColor="@color/white"
         app:titleMarginStart="30dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -32,27 +32,19 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp">
             <Button
+                android:id="@+id/btnVideos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/azul_claro"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="13dp"
-                android:text="Todos"
+                android:text="videos"
                 android:layout_marginLeft="10dp"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Completados"
-                android:textSize="13dp"
-                android:backgroundTint="@color/azul_claro"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:layout_marginLeft="10dp"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="En proceso"
+                android:text="Recursos Adicionales"
                 android:textSize="13dp"
                 android:backgroundTint="@color/azul_claro"
                 android:textColor="@color/white"
@@ -65,10 +57,10 @@
             android:orientation="vertical"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="50dp">
-            <androidx.recyclerview.widget.RecyclerView
-                tools:listitem="@layout/item_curso"
-                android:id="@+id/reciclerCurso"
 
+            <androidx.recyclerview.widget.RecyclerView
+                tools:listitem="@layout/item_modulo_curso"
+                android:id="@+id/reciclerVideoCurso"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 

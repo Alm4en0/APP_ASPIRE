@@ -1,55 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#0E1B29"
-    tools:context=".MainActivity">
+    android:background="@color/fondo">
 
-    <!-- Encabezado -->
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarCursos"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Introducción al Desarrollo Personal"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:padding="16dp"
+        android:theme="@style/Theme.Prototipoproyecto"
+        android:background="@color/header"
+        app:title="Nombre Modulo"
+        app:titleTextColor="@color/white"
+        app:titleMarginStart="30dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="16dp"
         android:layout_gravity="center"/>
 
-    <!-- Contenedor para las pestañas -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="start"
+        android:layout_gravity="center"
+        android:layout_margin="10dp">
+        <TextView
+            android:id="@+id/txtTituloCurso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Titulo de Video"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_gravity="start|top"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/txtDescripcionCurso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descripcion breve del video"
+            android:textSize="15sp"
+            android:layout_gravity="start|bottom"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/plomo_claro2"/>
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:padding="8dp">
+        android:layout_margin="16dp">
 
         <Button
-            android:id="@+id/btn_videos"
+            android:id="@+id/btnPlay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="VIDEOS"
-            android:textColor="#FFFFFF"
-            android:padding="8dp"
-            android:layout_marginEnd="8dp"/>
+            android:text="Reproducir"
+            android:backgroundTint="@android:color/white"
+            android:textColor="@android:color/black"/>
 
         <Button
-            android:id="@+id/btn_recursos"
+            android:id="@+id/btnPause"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RECURSOS ADICIONALES"
-            android:textColor="#FFFFFF"
-            android:padding="8dp"/>
+            android:text="Pausar"
+            android:backgroundTint="@android:color/white"
+            android:textColor="@android:color/black"/>
+
+        <Button
+            android:id="@+id/btnFullscreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pantalla Completa"
+            android:backgroundTint="@android:color/white"
+            android:textColor="@android:color/black"/>
+
     </LinearLayout>
-
-    <!-- Lista de elementos -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp"
-        android:clipToPadding="false"/>
 
 </LinearLayout>
