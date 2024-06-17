@@ -1,16 +1,22 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme -->
-    <style name="Base.Theme.Prototipoproyecto" parent="Theme.Material3.DayNight">
+    <style name="Base.Theme.Prototipoproyecto" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here -->
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="colorPrimary">@color/header</item>
+        <item name="colorPrimaryVariant">@color/header</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#03DAC5</item>
+        <item name="colorSecondaryVariant">#018786</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Other attributes -->
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="Theme.Prototipoproyecto" parent="Base.Theme.Prototipoproyecto">
-        <item name="actionBarStyle">@style/MyActionBar</item>
-        <item name="android:colorPrimary">@color/header</item>
+
     </style>
 
-    <style name="MyActionBar" parent="Widget.Material3.ActionBar.Solid">
-        <item name="background">@color/header</item>
-        <item name="titleTextColor">@android:color/white</item>
-    </style>
+
 </resources>

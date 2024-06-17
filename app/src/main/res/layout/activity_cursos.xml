@@ -7,13 +7,25 @@
     android:layout_height="match_parent"
     tools:context=".cursos.CursoActivity"
     android:background="@color/fondo">
+    
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarCursos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.Prototipoproyecto"
+        android:background="@color/header"
+        app:title="Mis Cursos"
+        app:titleTextColor="@color/white"
+        app:titleMarginStart="30dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:layout_marginTop="35dp">
+        android:layout_marginTop="55dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,12 +37,14 @@
                 android:backgroundTint="@color/azul_claro"
                 android:textColor="@color/white"
                 android:textStyle="bold"
+                android:textSize="10dp"
                 android:text="Todos"
                 android:layout_marginLeft="10dp"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Completados"
+                android:textSize="10dp"
                 android:backgroundTint="@color/azul_claro"
                 android:textColor="@color/white"
                 android:textStyle="bold"
@@ -39,6 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="En proceso"
+                android:textSize="10dp"
                 android:backgroundTint="@color/azul_claro"
                 android:textColor="@color/white"
                 android:textStyle="bold"

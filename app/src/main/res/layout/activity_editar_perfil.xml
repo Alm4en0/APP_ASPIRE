@@ -9,12 +9,24 @@
     android:orientation="vertical"
     android:background="@color/fondo">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarCursos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.Prototipoproyecto"
+        android:background="@color/header"
+        app:title="Editar Perfil"
+        app:titleTextColor="@color/white"
+        app:titleMarginStart="30dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_constraintTop_toTopOf="parent"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="80dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -30,20 +42,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_gravity="center_vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="EDITAR PERFIL"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:textSize="27sp"
-                    android:layout_gravity="center_vertical"
-                    />
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/liena"
-                    />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -58,11 +57,22 @@
                     android:text="almendra.garcia@example.com"
                     android:textColor="@color/white"
                     android:textStyle="italic"
-                    android:textSize="10sp"
+                    android:textSize="15sp"
                     android:layout_gravity="center_vertical"/>
 
             </LinearLayout>
+
+
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginStart="25dp"
+            android:background="@color/rojo"
+            />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Nombre:"
-                android:textSize="23sp"
+                android:textSize="20sp"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
@@ -81,7 +91,7 @@
                 />
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/rounded_corners"
                 android:padding="10dp"
@@ -93,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Apellido:"
-                android:textSize="23sp"
+                android:textSize="20sp"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
@@ -101,7 +111,7 @@
                 />
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/rounded_corners"
                 android:padding="10dp"
@@ -121,7 +131,7 @@
                 />
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/rounded_corners"
                 android:padding="10dp"
@@ -141,7 +151,7 @@
                 />
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/rounded_corners"
                 android:padding="10dp"
@@ -149,12 +159,6 @@
                 android:layout_gravity="center_horizontal"
                 android:backgroundTint="#2E3C52"
                 />
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_marginTop="35dp">
 
                 <Button
                     android:layout_gravity="center_horizontal"
@@ -165,22 +169,8 @@
                     android:text="Guardar"
                     android:textColor="@color/white"
                     android:textStyle="bold"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginBottom="15dp"/>
-
-                <Button
-                    android:layout_gravity="center_horizontal"
-                    android:id="@+id/btnEditCancelar"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/azul_claro"
-                    android:textColor="@color/white"
-                    android:text="Cancelar"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="15dp"/>
-
-            </LinearLayout>
-
 
         </LinearLayout>
 

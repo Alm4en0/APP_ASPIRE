@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0E1B29"
+    tools:context=".MainActivity">
+
+    <!-- Encabezado -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Introducción al Desarrollo Personal"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:padding="16dp"
+        android:layout_gravity="center"/>
+
+    <!-- Contenedor para las pestañas -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp">
+
+        <Button
+            android:id="@+id/btn_videos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VIDEOS"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/tab_selector"
+            android:padding="8dp"
+            android:layout_marginEnd="8dp"/>
+
+        <Button
+            android:id="@+id/btn_recursos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RECURSOS ADICIONALES"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/tab_selector"
+            android:padding="8dp"/>
+    </LinearLayout>
+
+    <!-- Lista de elementos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:clipToPadding="false"/>
+
+</LinearLayout>

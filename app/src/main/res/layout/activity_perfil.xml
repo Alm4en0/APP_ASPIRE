@@ -7,6 +7,18 @@
     android:background="@color/fondo"
     tools:context=".PerfilActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarCursos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Base.Theme.Prototipoproyecto"
+        android:background="@color/header"
+        app:title="Mi Perfil "
+        app:titleTextColor="@color/white"
+        app:titleMarginStart="30dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <!-- Scrollable content -->
     <ScrollView
         android:layout_width="match_parent"
@@ -18,7 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginTop="50dp">
 
             <ImageView
                 android:layout_width="96dp"

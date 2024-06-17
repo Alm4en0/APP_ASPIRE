@@ -109,8 +109,6 @@ class HomeActivity : AppCompatActivity() {
                     val intent = Intent(this, CursoActivity::class.java)
                     intent.putExtra("currentScreen", COURSE_SCREEN)
                     startActivity(intent)
-                    currentScreen = COURSE_SCREEN
-                    updateBottomNavigation(bottomNav)
                     true
                 }
 
@@ -124,8 +122,6 @@ class HomeActivity : AppCompatActivity() {
                     val intent = Intent(this, PerfilActivity::class.java)
                     intent.putExtra("currentScreen", PROFILE_SCREEN)
                     startActivity(intent)
-                    currentScreen = PROFILE_SCREEN
-                    updateBottomNavigation(bottomNav)
                     true
                 }
 

@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.tecsup.prototipo_proyecto.R.id.toolbarCursos
 import com.tecsup.prototipo_proyecto.auth.LoginActivity
 import com.tecsup.prototipo_proyecto.cursos.CursoActivity
 
@@ -18,10 +20,14 @@ class PerfilActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_perfil)
 
-        // Configuración del ActionBar
-        val actionBar = supportActionBar
-        actionBar?.setDisplayHomeAsUpEnabled(true)
-        actionBar?.title = "Mi Perfil"
+        // Configuración del Toolbar como ActionBar
+        val toolbar: Toolbar = findViewById(toolbarCursos)
+        setSupportActionBar(toolbar)
+
+        // Habilitar la flecha de retroceso
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Mi Perfil"
+
 
         val btnEditarPerfil = findViewById<Button>(R.id.btnEditarPerfil)
         btnEditarPerfil.setOnClickListener {
@@ -30,7 +36,7 @@ class PerfilActivity : AppCompatActivity() {
         }
 
         // Recuperar el valor de currentScreen desde el Intent
-        currentScreen = intent.getIntExtra("currentScreen", -1)
+        currentScreen = intent.getIntExtra("currentScreen", HomeActivity.HOME_SCREEN)
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNav.setOnNavigationItemSelectedListener { menuItem ->
