@@ -3,11 +3,8 @@ package com.tecsup.prototipo_proyecto
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.tecsup.prototipo_proyecto.R.id.toolbarCursos
 import com.tecsup.prototipo_proyecto.auth.LoginActivity
@@ -16,6 +13,7 @@ import com.tecsup.prototipo_proyecto.cursos.CursoActivity
 class PerfilActivity : AppCompatActivity() {
 
     private var currentScreen: Int? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_perfil)
@@ -25,18 +23,17 @@ class PerfilActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         // Habilitar la flecha de retroceso
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Mi Perfil"
-
 
         val btnEditarPerfil = findViewById<Button>(R.id.btnEditarPerfil)
         btnEditarPerfil.setOnClickListener {
             val intent = Intent(this, EditarPerfilActivity::class.java)
+            intent.putExtra("currentScreen", currentScreen)
             startActivity(intent)
         }
 
         // Recuperar el valor de currentScreen desde el Intent
-        currentScreen = intent.getIntExtra("currentScreen", HomeActivity.HOME_SCREEN)
+        currentScreen = intent.getIntExtra("currentScreen", HomeActivity.PROFILE_SCREEN)
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNav.setOnNavigationItemSelectedListener { menuItem ->
@@ -51,8 +48,6 @@ class PerfilActivity : AppCompatActivity() {
                     val intent = Intent(this, CursoActivity::class.java)
                     intent.putExtra("currentScreen", HomeActivity.COURSE_SCREEN)
                     startActivity(intent)
-                    currentScreen = HomeActivity.COURSE_SCREEN
-                    updateBottomNavigation(bottomNav)
                     true
                 }
                 R.id.heart -> {
@@ -64,8 +59,6 @@ class PerfilActivity : AppCompatActivity() {
                     val intent = Intent(this, PerfilActivity::class.java)
                     intent.putExtra("currentScreen", HomeActivity.PROFILE_SCREEN)
                     startActivity(intent)
-                    currentScreen = HomeActivity.PROFILE_SCREEN
-                    updateBottomNavigation(bottomNav)
                     true
                 }
                 else -> false
@@ -74,10 +67,14 @@ class PerfilActivity : AppCompatActivity() {
         updateBottomNavigation(bottomNav)
     }
 
+    override fun onResume() {
+        super.onResume()
+        currentScreen = intent.getIntExtra("currentScreen", HomeActivity.PROFILE_SCREEN)
+        updateBottomNavigation(findViewById(R.id.bottom_navigation))
+    }
+
     private fun updateBottomNavigation(bottomNav: BottomNavigationView) {
         bottomNav.menu.getItem(currentScreen ?: 0).isChecked = true
         bottomNav.menu.getItem(currentScreen ?: 0).isEnabled = false
     }
-
-
 }
