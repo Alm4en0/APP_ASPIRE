@@ -20,14 +20,14 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="300dp"
         android:layout_gravity="center"
-        android:layout_margin="16dp">
+        android:layout_margin="10dp">
 
         <VideoView
             android:id="@+id/videoView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center" />
 
         <com.tecsup.prototipo_proyecto.videoscurso.CustomMediaController
@@ -37,11 +37,31 @@
             android:layout_gravity="bottom" />
     </FrameLayout>
 
+    <TextView
+        android:id="@+id/txtNumeroModulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|top"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:text="Modulo 1"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="15dp"
+        android:background="@color/plomo_claro"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="10dp">
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -50,7 +70,7 @@
             android:weightSum="1">
 
             <TextView
-                android:id="@+id/txtTituloCurso"
+                android:id="@+id/txtTituloModulo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|top"
@@ -75,10 +95,11 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/txtDescripcionCurso"
+            android:id="@+id/txtDescripcionModulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Descripcion breve del video"
+            android:text="Descripcion breve del video lalalala
+            lalala lalala lalal k lalal lalal lalala lalal"
             android:textSize="15sp"
             android:layout_gravity="start|bottom"
             android:layout_marginLeft="10dp"
@@ -88,34 +109,15 @@
             android:textColor="@color/plomo_claro2"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:layout_gravity="center|bottom"
+        android:id="@+id/btnSiguienteVideo"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="20dp">
+        android:backgroundTint="@color/rojo"
+        android:text="Siguiente"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_marginTop="40dp"/>
 
-        <Button
-            android:id="@+id/btnPlay"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.33"
-            android:text="Play" />
-
-        <Button
-            android:id="@+id/btnPause"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.33"
-            android:text="Pause" />
-
-        <Button
-            android:id="@+id/btnFullscreen"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.33"
-            android:text="Fullscreen" />
-
-    </LinearLayout>
 </LinearLayout>
