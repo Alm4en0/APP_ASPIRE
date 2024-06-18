@@ -113,8 +113,9 @@ class HomeActivity : AppCompatActivity() {
                 }
 
                 R.id.heart -> {
-                    currentScreen = FAVORITE_SCREEN
-                    updateBottomNavigation(bottomNav)
+                    val intent = Intent(this, FavoritesActivity::class.java)
+                    intent.putExtra("currentScreen", FAVORITE_SCREEN)
+                    startActivity(intent)
                     true
                 }
 

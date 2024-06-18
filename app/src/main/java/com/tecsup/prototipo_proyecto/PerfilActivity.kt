@@ -1,29 +1,44 @@
 package com.tecsup.prototipo_proyecto
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.tecsup.prototipo_proyecto.R.id.toolbarCursos
 import com.tecsup.prototipo_proyecto.auth.LoginActivity
+import com.tecsup.prototipo_proyecto.auth.LoginRepository
+import com.tecsup.prototipo_proyecto.auth.LoginViewModel
+import com.tecsup.prototipo_proyecto.auth.LoginViewModelFactory
 import com.tecsup.prototipo_proyecto.cursos.CursoActivity
 
 class PerfilActivity : AppCompatActivity() {
 
     private var currentScreen: Int? = null
+    private lateinit var userViewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_perfil)
 
         // Configuración del Toolbar como ActionBar
-        val toolbar: Toolbar = findViewById(toolbarCursos)
+        val toolbar: Toolbar = findViewById(R.id.toolbarCursos)
         setSupportActionBar(toolbar)
 
         // Habilitar la flecha de retroceso
         supportActionBar?.title = "Mi Perfil"
+
+        val loginRepository = LoginRepository(this)
+        val viewModelFactory = LoginViewModelFactory(loginRepository)
+        userViewModel = ViewModelProvider(this, viewModelFactory)[LoginViewModel::class.java]
+
+        val btnCerrarSesion = findViewById<Button>(R.id.btnCerrarSesion)
+        btnCerrarSesion.setOnClickListener {
+            showLogoutConfirmationDialog()
+        }
 
         val btnEditarPerfil = findViewById<Button>(R.id.btnEditarPerfil)
         btnEditarPerfil.setOnClickListener {
@@ -51,8 +66,9 @@ class PerfilActivity : AppCompatActivity() {
                     true
                 }
                 R.id.heart -> {
-                    currentScreen = HomeActivity.FAVORITE_SCREEN
-                    updateBottomNavigation(bottomNav)
+                    val intent = Intent(this, FavoritesActivity::class.java)
+                    intent.putExtra("currentScreen", HomeActivity.FAVORITE_SCREEN)
+                    startActivity(intent)
                     true
                 }
                 R.id.gato -> {
@@ -76,5 +92,23 @@ class PerfilActivity : AppCompatActivity() {
     private fun updateBottomNavigation(bottomNav: BottomNavigationView) {
         bottomNav.menu.getItem(currentScreen ?: 0).isChecked = true
         bottomNav.menu.getItem(currentScreen ?: 0).isEnabled = false
+    }
+
+    private fun showLogoutConfirmationDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Cerrar Sesión")
+        builder.setMessage("¿Estás seguro de que quieres cerrar sesión?")
+        builder.setPositiveButton("Sí") { dialogInterface: DialogInterface, i: Int ->
+            userViewModel.logout()
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags =
+                Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
+        }
+        builder.setNegativeButton("Cancelar") { dialogInterface: DialogInterface, i: Int ->
+            // Cancelar la acción
+        }
+        builder.show()
     }
 }

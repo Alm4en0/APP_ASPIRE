@@ -8,5 +8,6 @@
     <color name="plomo_claro">#7E7C7C</color>
     <color name="plomo_claro2">#B6B6B6</color>
     <color name="azul_claro">#802E3C52</color>
+    <color name="colorDialogButtonTextColor">#757575</color>
 
 </resources>

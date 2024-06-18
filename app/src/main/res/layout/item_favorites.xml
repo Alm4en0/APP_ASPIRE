@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="330dp"
+    android:layout_height="87dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:layout_marginTop="15dp"
+    android:backgroundTint="@color/fondo"
+    android:background="@color/fondo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <LinearLayout
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|left"
+                android:orientation="horizontal"
+                android:layout_marginLeft="15dp">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/btnPlay"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_play2"
+                    app:fabCustomSize="50dp"
+                    app:backgroundTint="@color/azul_claro"
+                    android:background="@color/azul_claro"
+                    app:tint="@color/white"
+                    app:fabSize="mini"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="start"
+                    android:layout_gravity="center">
+                    <TextView
+                        android:id="@+id/txtTituloCurso"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Titulo de Video"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:layout_gravity="start|top"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/white"/>
+
+                    <TextView
+                        android:id="@+id/txtDescripcionCurso"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Descripcion breve del video"
+                        android:textSize="10sp"
+                        android:layout_gravity="start|bottom"
+                        android:layout_marginLeft="10dp"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:textColor="@color/plomo_claro2"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/imbFavorite"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:backgroundTint="@android:color/transparent"
+                android:padding="8dp"
+                android:src="@drawable/icono_favorite"
+                app:tint="@color/white"/>
+
+
+    </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/plomo_claro"/>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -17,5 +17,9 @@
     <style name="Theme.Prototipoproyecto" parent="Base.Theme.Prototipoproyecto">
 
     </style>
+    <style name="AlertDialogButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/colorDialogButtonTextColor</item>
+    </style>
+
 
 </resources>

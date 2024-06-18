@@ -1,6 +1,5 @@
 package com.tecsup.prototipo_proyecto.auth
 
-import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,8 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.tecsup.prototipo_proyecto.network.response.LoginResponse
 import kotlinx.coroutines.launch
 
-class LoginViewModel : ViewModel() {
-    private val repository = LoginRepository()
+class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
 
     val userLoginError = MutableLiveData<Boolean>()
     val userLoginMsgError = MutableLiveData<String>()
@@ -22,7 +20,7 @@ class LoginViewModel : ViewModel() {
         if (email.isEmpty() || pass.isEmpty()) {
             userLoginError.value = true
             userLoginMsgError.value = "Ingrese datos"
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches() || email.length < 5) {
+        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches() || email.length < 5) {
             userLoginError.value = true
             userLoginMsgError.value = "Verifique su correo"
         } else if (pass.length < 8) {
@@ -50,6 +48,14 @@ class LoginViewModel : ViewModel() {
                 error.postValue(e.message)
             }
         }
+    }
+
+    fun isLoggedIn(): Boolean {
+        return repository.isLoggedIn()
+    }
+
+    fun logout() {
+        repository.logout()
     }
 
     private fun handleLoginError(exception: Throwable?) {

@@ -1,24 +1,21 @@
-package com.tecsup.prototipo_proyecto.cursos
+package com.tecsup.prototipo_proyecto
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.tecsup.prototipo_proyecto.FavoritesActivity
-import com.tecsup.prototipo_proyecto.HomeActivity
-import com.tecsup.prototipo_proyecto.PerfilActivity
-import com.tecsup.prototipo_proyecto.R
+import com.tecsup.prototipo_proyecto.cursos.CursoActivity
 
-class CursoActivity : AppCompatActivity() {
+class FavoritesActivity : AppCompatActivity() {
 
     private var currentScreen: Int? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cursos)
+        setContentView(R.layout.activity_favorites)
 
         // Configuración del Toolbar como ActionBar
         val toolbar: Toolbar = findViewById(R.id.toolbarCursos)
@@ -26,16 +23,13 @@ class CursoActivity : AppCompatActivity() {
 
         // Habilitar la flecha de retroceso
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Mis Cursos"
+        supportActionBar?.title = "Mis Favoritos"
 
         // Recuperar el valor de currentScreen desde el Intent
         currentScreen = intent.getIntExtra("currentScreen", -1)
 
         // Configuración del BottomNavigationView
         setupBottomNavigationView()
-
-        // Configuración del RecyclerView de cursos
-        setupRecyclerView()
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -51,7 +45,7 @@ class CursoActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.home -> {
                     if (currentScreen != HomeActivity.HOME_SCREEN) {
-                        startActivity(Intent(this@CursoActivity, HomeActivity::class.java))
+                        startActivity(Intent(this@FavoritesActivity, HomeActivity::class.java))
                         currentScreen = HomeActivity.HOME_SCREEN
                         updateBottomNavigation(bottomNav)
                     }
@@ -81,25 +75,6 @@ class CursoActivity : AppCompatActivity() {
         updateBottomNavigation(bottomNav)
     }
 
-    private fun setupRecyclerView() {
-        val recyclerNotas = findViewById<RecyclerView>(R.id.reciclerCurso)
-
-        val listNotas = listOf(
-            Curso1("Certificado1", "Descripción 1", "1520", "Curso2"),
-            Curso1("Certificado2", "Descripción 2", "1520", "Curso2"),
-            Curso1("Certificado3", "Descripción 3", "1520", "Curso2"),
-            Curso1("Certificado4", "Descripción 4", "1520", "Curso2"),
-            Curso1("Certificado1", "Descripción 1", "1520", "Curso2"),
-            Curso1("Certificado2", "Descripción 2", "1520", "Curso2"),
-            Curso1("Certificado3", "Descripción 3", "1520", "Curso2"),
-            Curso1("Certificado4", "Descripción 4", "1520", "Curso2")
-        )
-
-        val adapter = Curso1Adapter(listNotas)
-        recyclerNotas.adapter = adapter
-        recyclerNotas.layoutManager = GridLayoutManager(this, 1)
-    }
-
     private fun updateBottomNavigation(bottomNav: BottomNavigationView) {
         currentScreen?.let { screen ->
             if (screen >= 0 && screen < bottomNav.menu.size()) {
@@ -108,5 +83,4 @@ class CursoActivity : AppCompatActivity() {
             }
         }
     }
-
 }

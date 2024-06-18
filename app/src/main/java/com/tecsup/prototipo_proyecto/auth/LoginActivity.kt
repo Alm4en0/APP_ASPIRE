@@ -1,6 +1,5 @@
 package com.tecsup.prototipo_proyecto.auth
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -23,7 +22,16 @@ class LoginActivity : AppCompatActivity() {
         // Hide the ActionBar
         supportActionBar?.hide()
 
-        userViewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+        val loginRepository = LoginRepository(this)
+        val viewModelFactory = LoginViewModelFactory(loginRepository)
+        userViewModel = ViewModelProvider(this, viewModelFactory)[LoginViewModel::class.java]
+
+        // Si ya está logueado, navegar a HomeActivity
+        if (userViewModel.isLoggedIn()) {
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+            return
+        }
 
         val edtCorreo = findViewById<EditText>(R.id.edtCorreo)
         val edtContrasena = findViewById<EditText>(R.id.edtContrasena)
@@ -52,6 +60,7 @@ class LoginActivity : AppCompatActivity() {
             usuario?.let {
                 Log.d("LoginActivity", "Login successful, navigating to PerfilActivity")
                 startActivity(Intent(this, HomeActivity::class.java))
+                finish()
             }
         }
 
