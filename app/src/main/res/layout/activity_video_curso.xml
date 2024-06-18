@@ -18,31 +18,61 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <VideoView
-        android:id="@+id/videoView"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_margin="16dp"
-        android:layout_gravity="center"/>
+        android:layout_height="400dp"
+        android:layout_gravity="center"
+        android:layout_margin="16dp">
+
+        <VideoView
+            android:id="@+id/videoView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
+
+        <com.tecsup.prototipo_proyecto.videoscurso.CustomMediaController
+            android:id="@+id/customMediaController"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom" />
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="start"
-        android:layout_gravity="center"
         android:layout_margin="10dp">
-        <TextView
-            android:id="@+id/txtTituloCurso"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Titulo de Video"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:layout_gravity="start|top"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/white"/>
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/txtTituloCurso"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|top"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="0.9"
+                android:text="Titulo de Video"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/imbFavorite"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="end"
+                android:backgroundTint="@android:color/transparent"
+                android:gravity="end"
+                android:padding="8dp"
+                android:src="@drawable/icono_favorite"
+                app:tint="@color/white"/>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/txtDescripcionCurso"
@@ -62,33 +92,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_margin="16dp">
+        android:weightSum="1"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="20dp">
 
         <Button
             android:id="@+id/btnPlay"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Reproducir"
-            android:backgroundTint="@android:color/white"
-            android:textColor="@android:color/black"/>
+            android:layout_weight="0.33"
+            android:text="Play" />
 
         <Button
             android:id="@+id/btnPause"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Pausar"
-            android:backgroundTint="@android:color/white"
-            android:textColor="@android:color/black"/>
+            android:layout_weight="0.33"
+            android:text="Pause" />
 
         <Button
             android:id="@+id/btnFullscreen"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Pantalla Completa"
-            android:backgroundTint="@android:color/white"
-            android:textColor="@android:color/black"/>
+            android:layout_weight="0.33"
+            android:text="Fullscreen" />
 
     </LinearLayout>
-
 </LinearLayout>
