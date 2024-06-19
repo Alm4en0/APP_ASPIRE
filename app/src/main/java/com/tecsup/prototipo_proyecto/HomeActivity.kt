@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.tecsup.prototipo_proyecto.Favoritos.FavoritesActivity
 import com.tecsup.prototipo_proyecto.categorias.Categoria
 import com.tecsup.prototipo_proyecto.categorias.CategoriaAdapter
 import com.tecsup.prototipo_proyecto.cursos.CursoActivity

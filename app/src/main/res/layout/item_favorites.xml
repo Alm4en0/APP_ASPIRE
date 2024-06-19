@@ -46,7 +46,7 @@
                     android:gravity="start"
                     android:layout_gravity="center">
                     <TextView
-                        android:id="@+id/txtTituloCurso"
+                        android:id="@+id/txtTituloFavoritos"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Titulo de Video"
@@ -57,7 +57,7 @@
                         android:textColor="@color/white"/>
 
                     <TextView
-                        android:id="@+id/txtDescripcionCurso"
+                        android:id="@+id/txtDescripcionFavoritos"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Descripcion breve del video"
@@ -82,7 +82,7 @@
                 app:tint="@color/white"/>
 
 
-    </LinearLayout>
+        </LinearLayout>
 
 
         <View

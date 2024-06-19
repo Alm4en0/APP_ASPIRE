@@ -7,7 +7,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.tecsup.prototipo_proyecto.FavoritesActivity
+import com.tecsup.prototipo_proyecto.Favoritos.FavoritesActivity
 import com.tecsup.prototipo_proyecto.HomeActivity
 import com.tecsup.prototipo_proyecto.PerfilActivity
 import com.tecsup.prototipo_proyecto.R

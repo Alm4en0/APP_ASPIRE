@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.tecsup.prototipo_proyecto.Favoritos.FavoritesActivity
 import com.tecsup.prototipo_proyecto.auth.LoginActivity
 import com.tecsup.prototipo_proyecto.auth.LoginRepository
 import com.tecsup.prototipo_proyecto.auth.LoginViewModel
