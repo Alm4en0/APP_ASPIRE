@@ -31,6 +31,8 @@ class HomeActivity : AppCompatActivity() {
         // Hide the ActionBar
         supportActionBar?.hide()
 
+        
+
         val recyclerNotas = findViewById<RecyclerView>(R.id.recyclerNotasViendo)
         val listNotas = listOf(
             NotaViendo("Diseño de Interfaces", "Omar Castañeda", "7 Semanas"),
