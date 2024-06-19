@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.tecsup.prototipo_proyecto.Favoritos.FavoritesActivity
-import com.tecsup.prototipo_proyecto.categorias.Categoria
-import com.tecsup.prototipo_proyecto.categorias.CategoriaAdapter
+import com.tecsup.prototipo_proyecto.categoria.Categoria
+import com.tecsup.prototipo_proyecto.categoria.CategoriaAdapter
 import com.tecsup.prototipo_proyecto.cursos.CursoActivity
 import com.tecsup.tecsupapp.notas.NotaViendo
 import com.tecsup.tecsupapp.notas.NotasAdapterViendo
@@ -79,21 +79,7 @@ class HomeActivity : AppCompatActivity() {
         recyclerNotasHorizontal.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        //Recycler Categorias
-        val recyclerCategorias = findViewById<RecyclerView>(R.id.recyclerCategorias)
-        val listCategorias = listOf(
-            Categoria("Finanzas"),
-            Categoria("Desarrollo Personal"),
-            Categoria("Bienes Raizes"),
-            Categoria("Finanzas"),
-            Categoria("Finanzas"),
-            Categoria("Finanzas"),
-        )
 
-        val adapterCategoria = CategoriaAdapter(listCategorias)
-        recyclerCategorias.adapter = adapterCategoria
-        recyclerCategorias.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         currentScreen = HOME_SCREEN
 

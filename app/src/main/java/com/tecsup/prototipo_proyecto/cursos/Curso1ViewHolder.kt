@@ -18,7 +18,6 @@ RecyclerView.ViewHolder(inflater.inflate(R.layout.item_curso, parent, false)){
     init {
         txtTitulo = itemView.findViewById(R.id.txtTitulo)
         txtTiempo = itemView.findViewById(R.id.txtTiempo)
-        txtnumeroCurso = itemView.findViewById(R.id.txtNumeroCurso)
         txtDescripcion = itemView.findViewById(R.id.txtDescripcion)
 
     }
