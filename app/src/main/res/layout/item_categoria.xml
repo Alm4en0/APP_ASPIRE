@@ -60,7 +60,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/lin"
+        android:src="@drawable/linia_larga"
         android:layout_marginTop="10dp"
         android:scaleType="centerCrop"/>
 </LinearLayout>
