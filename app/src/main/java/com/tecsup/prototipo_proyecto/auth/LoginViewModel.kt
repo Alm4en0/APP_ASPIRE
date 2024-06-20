@@ -9,6 +9,7 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
 
+    private var authToken: String? = null
     val userLoginError = MutableLiveData<Boolean>()
     val userLoginMsgError = MutableLiveData<String>()
     val error = MutableLiveData<String>()
@@ -35,20 +36,22 @@ class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
         viewModelScope.launch {
             try {
                 val result = repository.login(email, pass)
-                if (result.isSuccess) {
-                    _client.postValue(result.getOrNull())
+                val loginResponse = result.getOrNull()
+                if (loginResponse != null) {
+                    authToken = loginResponse.token
+                    repository.saveUsername(loginResponse.username)  // Guardar el nombre de usuario en SharedPreferences
                     userLoginError.postValue(false)
+                    _client.postValue(loginResponse)
                 } else {
-                    _client.postValue(null)
                     handleLoginError(result.exceptionOrNull())
                 }
             } catch (e: Exception) {
-                _client.postValue(null)
                 handleLoginError(e)
                 error.postValue(e.message)
             }
         }
     }
+
 
     fun isLoggedIn(): Boolean {
         return repository.isLoggedIn()

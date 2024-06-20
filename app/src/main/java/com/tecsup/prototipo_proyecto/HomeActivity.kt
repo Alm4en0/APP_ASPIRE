@@ -1,23 +1,26 @@
 package com.tecsup.prototipo_proyecto
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.tecsup.prototipo_proyecto.Favoritos.FavoritesActivity
-import com.tecsup.prototipo_proyecto.categoria.Categoria
-import com.tecsup.prototipo_proyecto.categoria.CategoriaAdapter
+import com.tecsup.prototipo_proyecto.auth.LoginRepository
 import com.tecsup.prototipo_proyecto.cursos.CursoActivity
-import com.tecsup.tecsupapp.notas.NotaViendo
-import com.tecsup.tecsupapp.notas.NotasAdapterViendo
 import com.tecsup.prototipo_proyecto.notasViendoHorizontal.NotaHorizontal
 import com.tecsup.prototipo_proyecto.notasViendoHorizontal.NotasAdapterHorizontal
+import com.tecsup.tecsupapp.notas.NotaViendo
+import com.tecsup.tecsupapp.notas.NotasAdapterViendo
+import com.tecsup.prototipo_proyecto.PerfilActivity
 
 class HomeActivity : AppCompatActivity() {
 
-    private var currentScreen: Int? = null
+    private var currentScreen: Int = HOME_SCREEN
+    private lateinit var userName: String
 
     companion object {
         const val HOME_SCREEN = 0
@@ -25,6 +28,7 @@ class HomeActivity : AppCompatActivity() {
         const val FAVORITE_SCREEN = 2
         const val PROFILE_SCREEN = 3
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -32,6 +36,15 @@ class HomeActivity : AppCompatActivity() {
         // Hide the ActionBar
         supportActionBar?.hide()
 
+        // Retrieve the username from SharedPreferences
+        val sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        userName = sharedPreferences.getString("username", "Usuario") ?: "Usuario"
+
+        // Set the username in the TextView
+        val userNameTextView = findViewById<TextView>(R.id.usernameTXT)
+        userNameTextView.text = userName
+
+        // Initialize RecyclerView for vertical notes
         val recyclerNotas = findViewById<RecyclerView>(R.id.recyclerNotasViendo)
         val listNotas = listOf(
             NotaViendo("Diseño de Interfaces", "Omar Castañeda", "7 Semanas"),
@@ -43,10 +56,9 @@ class HomeActivity : AppCompatActivity() {
         )
         val adapter = NotasAdapterViendo(listNotas)
         recyclerNotas.adapter = adapter
-        recyclerNotas.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerNotas.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        // Content 2
+        // Initialize RecyclerView for horizontal notes
         val recyclerNotasHorizontal = findViewById<RecyclerView>(R.id.recyclerNotasViendoHorizontal)
         val listNotas2 = listOf(
             NotaHorizontal(
@@ -76,52 +88,41 @@ class HomeActivity : AppCompatActivity() {
         )
         val adapter2 = NotasAdapterHorizontal(listNotas2)
         recyclerNotasHorizontal.adapter = adapter2
-        recyclerNotasHorizontal.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerNotasHorizontal.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-
-
-        currentScreen = HOME_SCREEN
-
+        // Initialize BottomNavigationView
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNav.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home -> {
-                    currentScreen = HOME_SCREEN
-                    updateBottomNavigation(bottomNav)
+                    if (currentScreen != HOME_SCREEN) {
+                        currentScreen = HOME_SCREEN
+                        // Update UI or perform any necessary actions for Home screen
+                    }
                     true
                 }
-
                 R.id.circleplay -> {
-                    val intent = Intent(this, CursoActivity::class.java)
-                    intent.putExtra("currentScreen", COURSE_SCREEN)
-                    startActivity(intent)
+                    startActivity(Intent(this, CursoActivity::class.java))
                     true
                 }
-
                 R.id.heart -> {
-                    val intent = Intent(this, FavoritesActivity::class.java)
-                    intent.putExtra("currentScreen", FAVORITE_SCREEN)
-                    startActivity(intent)
+                    startActivity(Intent(this, FavoritesActivity::class.java))
                     true
                 }
-
                 R.id.gato -> {
-                    val intent = Intent(this, PerfilActivity::class.java)
-                    intent.putExtra("currentScreen", PROFILE_SCREEN)
-                    startActivity(intent)
+                    startActivity(Intent(this, PerfilActivity::class.java))
                     true
                 }
-
                 else -> false
             }
         }
+
+        // Set initial state
         updateBottomNavigation(bottomNav)
-
     }
 
-        private fun updateBottomNavigation(bottomNav: BottomNavigationView) {
-            bottomNav.menu.getItem(currentScreen ?: 0).isChecked = true
-            bottomNav.menu.getItem(currentScreen ?: 0).isEnabled = false
-        }
+    private fun updateBottomNavigation(bottomNav: BottomNavigationView) {
+        bottomNav.menu.getItem(currentScreen).isChecked = true
+        bottomNav.menu.getItem(currentScreen).isEnabled = false
     }
+}
