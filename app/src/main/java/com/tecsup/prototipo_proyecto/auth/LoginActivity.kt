@@ -1,5 +1,6 @@
 package com.tecsup.prototipo_proyecto.auth
 
+import LoginViewModelFactory
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -23,12 +24,13 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         val loginRepository = LoginRepository(this)
-        val viewModelFactory = LoginViewModelFactory(loginRepository)
+        val viewModelFactory = LoginViewModelFactory(applicationContext)
         userViewModel = ViewModelProvider(this, viewModelFactory)[LoginViewModel::class.java]
-
         // Si ya está logueado, navegar a HomeActivity
         if (userViewModel.isLoggedIn()) {
-            startActivity(Intent(this, HomeActivity::class.java))
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("userName", loginRepository.getUsername())  // Pasar el nombre de usuario
+            startActivity(intent)
             finish()
             return
         }
@@ -56,10 +58,13 @@ class LoginActivity : AppCompatActivity() {
             errorMessage?.let { showErrorMessage(it) }
         }
 
-        userViewModel.cliente.observe(this) { usuario ->
-            usuario?.let {
-                Log.d("LoginActivity", "Login successful, navigating to PerfilActivity")
-                startActivity(Intent(this, HomeActivity::class.java))
+        userViewModel.cliente.observe(this) { loginResponse ->
+            loginResponse?.let {
+                Log.d("LoginActivity", "Login successful, navigating to HomeActivity")
+                val intent = Intent(this, HomeActivity::class.java)
+                // Pasar el nombre de usuario al HomeActivity
+                intent.putExtra("userName", loginRepository.getUsername())
+                startActivity(intent)
                 finish()
             }
         }

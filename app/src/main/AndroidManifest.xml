@@ -18,7 +18,10 @@
         android:theme="@style/Base.Theme.Prototipoproyecto"
         tools:targetApi="31">
         <activity
-            android:name=".FavoritesActivity"
+            android:name=".Favoritos.FavoritesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".videoscurso.VideoCursoActivity"
             android:exported="false" />
         <activity
             android:name=".moduloscurso.ModuloCursoActivity"

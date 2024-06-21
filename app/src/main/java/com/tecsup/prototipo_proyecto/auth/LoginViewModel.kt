@@ -9,12 +9,23 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
 
+    private var authToken: String? = null
+    private val _username = MutableLiveData<String>()
+    val userName: LiveData<String> get() = _username
     val userLoginError = MutableLiveData<Boolean>()
     val userLoginMsgError = MutableLiveData<String>()
     val error = MutableLiveData<String>()
 
     private val _client = MutableLiveData<LoginResponse?>()
     val cliente: LiveData<LoginResponse?> get() = _client
+
+    init {
+        fetchUsername()  // Obtener el nombre del usuario en la inicialización
+    }
+
+    private fun fetchUsername() {
+        _username.value = repository.getUsername() ?: "Usuario"
+    }
 
     fun login(email: String, pass: String) {
         if (email.isEmpty() || pass.isEmpty()) {
@@ -35,20 +46,23 @@ class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
         viewModelScope.launch {
             try {
                 val result = repository.login(email, pass)
-                if (result.isSuccess) {
-                    _client.postValue(result.getOrNull())
+                val loginResponse = result.getOrNull()
+                if (loginResponse != null) {
+                    authToken = loginResponse.token
+                    repository.saveUsername(loginResponse.username)  // Guardar el nombre de usuario
+                    _username.postValue(loginResponse.username)      // Actualizar el LiveData
                     userLoginError.postValue(false)
+                    _client.postValue(loginResponse)
                 } else {
-                    _client.postValue(null)
                     handleLoginError(result.exceptionOrNull())
                 }
             } catch (e: Exception) {
-                _client.postValue(null)
                 handleLoginError(e)
                 error.postValue(e.message)
             }
         }
     }
+
 
     fun isLoggedIn(): Boolean {
         return repository.isLoggedIn()
