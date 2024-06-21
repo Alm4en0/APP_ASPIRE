@@ -21,6 +21,9 @@
             android:name=".Favoritos.FavoritesActivity"
             android:exported="false" />
         <activity
+            android:name=".videoscurso.VideoCursoActivity"
+            android:exported="false" />
+        <activity
             android:name=".moduloscurso.ModuloCursoActivity"
             android:exported="false" />
         <activity

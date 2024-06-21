@@ -12,17 +12,21 @@
         android:layout_width="30dp"
         android:layout_height="20dp"
         android:layout_gravity="right|center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="14dp"
         android:src="@drawable/lupa"/>
+
     <Button
+        android:id="@+id/btnVerModulo"
         android:layout_width="70dp"
         android:layout_height="30dp"
         android:layout_gravity="bottom|right"
-        android:text="CONTINUAR"
+        android:text="VER"
         android:textSize="10sp"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="14dp"
         android:layout_marginBottom="10dp"
         android:gravity="center"
-        android:padding="1dp"/>
+        android:padding="5dp"/>
 
     <LinearLayout
         android:layout_width="250dp"
@@ -42,13 +46,14 @@
                 android:layout_height="20dp"
                 android:text="Titulo1"
                 android:textColor="@color/black"
-                android:textSize="12sp"/>
+                android:textStyle="bold"
+                android:textSize="15sp"/>
             <TextView
                 android:id="@+id/txtDescripcion"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla interdum."
-                android:textSize="9sp"
+                android:textSize="12sp"
                 android:textColor="@color/black"/>
 
         </LinearLayout>

@@ -1,5 +1,6 @@
 package com.tecsup.prototipo_proyecto
 
+import LoginViewModelFactory
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -13,7 +14,6 @@ import com.tecsup.prototipo_proyecto.Favoritos.FavoritesActivity
 import com.tecsup.prototipo_proyecto.auth.LoginActivity
 import com.tecsup.prototipo_proyecto.auth.LoginRepository
 import com.tecsup.prototipo_proyecto.auth.LoginViewModel
-import com.tecsup.prototipo_proyecto.auth.LoginViewModelFactory
 import com.tecsup.prototipo_proyecto.cursos.CursoActivity
 
 class PerfilActivity : AppCompatActivity() {
@@ -33,7 +33,7 @@ class PerfilActivity : AppCompatActivity() {
         supportActionBar?.title = "Mi Perfil"
 
         val loginRepository = LoginRepository(this)
-        val viewModelFactory = LoginViewModelFactory(loginRepository)
+        val viewModelFactory = LoginViewModelFactory(applicationContext)
         userViewModel = ViewModelProvider(this, viewModelFactory)[LoginViewModel::class.java]
 
         val btnCerrarSesion = findViewById<Button>(R.id.btnCerrarSesion)

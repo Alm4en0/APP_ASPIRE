@@ -2,6 +2,7 @@ package com.tecsup.prototipo_proyecto.cursos
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.GridLayoutManager
@@ -11,6 +12,7 @@ import com.tecsup.prototipo_proyecto.Favoritos.FavoritesActivity
 import com.tecsup.prototipo_proyecto.HomeActivity
 import com.tecsup.prototipo_proyecto.PerfilActivity
 import com.tecsup.prototipo_proyecto.R
+import com.tecsup.prototipo_proyecto.moduloscurso.ModuloCursoActivity
 
 class CursoActivity : AppCompatActivity() {
 
@@ -36,6 +38,34 @@ class CursoActivity : AppCompatActivity() {
 
         // Configuración del RecyclerView de cursos
         setupRecyclerView()
+    }
+
+    private fun setupRecyclerView() {
+        val recyclerNotas = findViewById<RecyclerView>(R.id.reciclerCurso)
+
+        val listNotas = listOf(
+            Curso1("Certificado1", "Descripción 1", "1520", "Curso2"),
+            Curso1("Certificado2", "Descripción 2", "1520", "Curso2"),
+            Curso1("Certificado3", "Descripción 3", "1520", "Curso2"),
+            Curso1("Certificado4", "Descripción 4", "1520", "Curso2"),
+            Curso1("Certificado1", "Descripción 1", "1520", "Curso2"),
+            Curso1("Certificado2", "Descripción 2", "1520", "Curso2"),
+            Curso1("Certificado3", "Descripción 3", "1520", "Curso2"),
+            Curso1("Certificado4", "Descripción 4", "1520", "Curso2")
+        )
+
+        val clickListener = { curso: Curso1 ->
+            val intent = Intent(this, ModuloCursoActivity::class.java)
+            intent.putExtra("tituloCurso", curso.tituloCurso)
+            intent.putExtra("descripcionCurso", curso.descripcionCurso)
+            // Puedes agregar más datos del curso aquí
+            startActivity(intent)
+        }
+
+        val adapter = Curso1Adapter(listNotas, clickListener)
+        recyclerNotas.adapter = adapter
+        recyclerNotas.layoutManager = GridLayoutManager(this, 1)
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -81,25 +111,6 @@ class CursoActivity : AppCompatActivity() {
         updateBottomNavigation(bottomNav)
     }
 
-    private fun setupRecyclerView() {
-        val recyclerNotas = findViewById<RecyclerView>(R.id.reciclerCurso)
-
-        val listNotas = listOf(
-            Curso1("Certificado1", "Descripción 1", "1520", "Curso2"),
-            Curso1("Certificado2", "Descripción 2", "1520", "Curso2"),
-            Curso1("Certificado3", "Descripción 3", "1520", "Curso2"),
-            Curso1("Certificado4", "Descripción 4", "1520", "Curso2"),
-            Curso1("Certificado1", "Descripción 1", "1520", "Curso2"),
-            Curso1("Certificado2", "Descripción 2", "1520", "Curso2"),
-            Curso1("Certificado3", "Descripción 3", "1520", "Curso2"),
-            Curso1("Certificado4", "Descripción 4", "1520", "Curso2")
-        )
-
-        val adapter = Curso1Adapter(listNotas)
-        recyclerNotas.adapter = adapter
-        recyclerNotas.layoutManager = GridLayoutManager(this, 1)
-    }
-
     private fun updateBottomNavigation(bottomNav: BottomNavigationView) {
         currentScreen?.let { screen ->
             if (screen >= 0 && screen < bottomNav.menu.size()) {
@@ -108,5 +119,4 @@ class CursoActivity : AppCompatActivity() {
             }
         }
     }
-
 }

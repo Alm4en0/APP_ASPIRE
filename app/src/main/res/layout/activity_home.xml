@@ -43,7 +43,7 @@
                         android:layout_marginRight="5dp"
                         android:text="Hola,"
                         android:textColor="@color/rojo"
-                        android:textSize="20sp"
+                        android:textSize="22sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -52,7 +52,7 @@
                         android:layout_height="wrap_content"
                         android:text="username"
                         android:textColor="@color/white"
-                        android:textSize="18sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -103,6 +103,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/txtVerTodo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
@@ -170,7 +171,7 @@
                         android:id="@+id/recyclerCategorias"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:listitem="@layout/item_categoria" />
+                        tools:listitem="@layout/item_categoria2" />
                 </LinearLayout>
 
 

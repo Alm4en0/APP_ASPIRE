@@ -1,5 +1,6 @@
 package com.tecsup.prototipo_proyecto.auth
 
+import LoginViewModelFactory
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -23,9 +24,8 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         val loginRepository = LoginRepository(this)
-        val viewModelFactory = LoginViewModelFactory(loginRepository)
+        val viewModelFactory = LoginViewModelFactory(applicationContext)
         userViewModel = ViewModelProvider(this, viewModelFactory)[LoginViewModel::class.java]
-
         // Si ya está logueado, navegar a HomeActivity
         if (userViewModel.isLoggedIn()) {
             val intent = Intent(this, HomeActivity::class.java)
