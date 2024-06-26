@@ -3,8 +3,15 @@ package com.tecsup.prototipo_proyecto.auth
 import RetrofitClient
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.tecsup.prototipo_proyecto.cursos.CursoInscripcion
 import com.tecsup.prototipo_proyecto.network.request.LoginRequest
 import com.tecsup.prototipo_proyecto.network.response.LoginResponse
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
 /**
@@ -94,5 +101,26 @@ class LoginRepository(private val context: Context) {
         } else {
             null
         }
+    }
+    fun getUserCourses(): LiveData<List<CursoInscripcion>> {
+        val coursesLiveData = MutableLiveData<List<CursoInscripcion>>()
+
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val response = RetrofitClient(context).retrofit.getUserCourses()
+                if (response.isSuccessful) {
+                    val courses = response.body() ?: emptyList()
+                    coursesLiveData.postValue(courses)
+                } else {
+                    Log.e("LoginRepository", "Error al obtener los cursos del usuario: ${response.errorBody()?.string()}")
+                    coursesLiveData.postValue(emptyList())
+                }
+            } catch (e: Exception) {
+                Log.e("LoginRepository", "Excepción al obtener los cursos del usuario: ${e.message}")
+                coursesLiveData.postValue(emptyList())
+            }
+        }
+
+        return coursesLiveData
     }
 }

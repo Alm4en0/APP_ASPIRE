@@ -1,23 +1,25 @@
 package com.tecsup.prototipo_proyecto.categorias2
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.tecsup.prototipo_proyecto.R
 import com.tecsup.prototipo_proyecto.categorias2.Categoria2
 
-class Categoria2ViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
-    RecyclerView.ViewHolder(inflater.inflate(R.layout.item_categoria2, parent, false)) {
-
-    private var txtNombreCategoria : TextView? = null
+class Categoria2ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    private lateinit var categoriaNombre: Button
 
     init {
-        txtNombreCategoria= itemView.findViewById(R.id.btnCategoria)
-
+        categoriaNombre = itemView.findViewById(R.id.btnCategoria)
     }
 
-    fun data(categoria2: Categoria2) {
-        txtNombreCategoria?.text = categoria2.nombre
+    fun data(categoria: Categoria2, clickListener: (Categoria2) -> Unit) {
+        categoriaNombre.text = categoria.nombre
+        itemView.setOnClickListener {
+            clickListener(categoria)
+        }
     }
 }

@@ -193,7 +193,9 @@ class HomeActivity : AppCompatActivity() {
 
             // Extract categories from courses
             val categorias = cursos.map { Categoria2(it.categoria_nombre) }.distinctBy { it.nombre }
-            val adapterCategorias = Categoria2Adapter(categorias)
+            val adapterCategorias = Categoria2Adapter(categorias){categoria->
+                Log.d("HomeActivity", "Categoria clickeado: $categoria")
+            }
             recyclerCategorias.adapter = adapterCategorias
         } else {
             Log.d("HomeActivity", "No se encontraron cursos para mostrar.") // Debugging

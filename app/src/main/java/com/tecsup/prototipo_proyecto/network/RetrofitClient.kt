@@ -8,15 +8,18 @@ class RetrofitClient(private val context: Context) {
     private val baseUrl = "https://jellyfish-app-olbh8.ondigitalocean.app/api/"
 
     val retrofit: ApiService by lazy {
-        val client = OkHttpClient.Builder()
-            .addInterceptor { chain ->
-                val original = chain.request()
-                val requestBuilder = original.newBuilder()
-                    .header("Authorization", "Token ${getAuthToken()}")
-                val request = requestBuilder.build()
-                chain.proceed(request)
+        val client = OkHttpClient.Builder().apply {
+            // Solo agrega el interceptor si el token no está vacío
+            if (getAuthToken().isNotEmpty()) {
+                addInterceptor { chain ->
+                    val original = chain.request()
+                    val requestBuilder = original.newBuilder()
+                        .header("Authorization", "Token ${getAuthToken()}")
+                    val request = requestBuilder.build()
+                    chain.proceed(request)
+                }
             }
-            .build()
+        }.build()
 
         Retrofit.Builder()
             .baseUrl(baseUrl)

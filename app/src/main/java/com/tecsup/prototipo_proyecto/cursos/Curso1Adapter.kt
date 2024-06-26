@@ -16,7 +16,7 @@ class Curso1Adapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Curso1ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return Curso1ViewHolder(inflater.inflate(R.layout.item_curso, parent, false))
+        return Curso1ViewHolder(inflater.inflate(R.layout.item_nota_viendo_horizontal, parent, false))
     }
 
     override fun onBindViewHolder(holder: Curso1ViewHolder, position: Int) {
