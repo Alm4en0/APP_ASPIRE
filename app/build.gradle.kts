@@ -46,6 +46,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.squareup.picasso:picasso:2.71828")
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.squareup.retrofit)
     implementation(libs.squareup.retrofit.converter)

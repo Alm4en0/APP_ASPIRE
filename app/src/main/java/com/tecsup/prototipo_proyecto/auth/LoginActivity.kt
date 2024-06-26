@@ -1,3 +1,4 @@
+// LoginActivity.kt
 package com.tecsup.prototipo_proyecto.auth
 
 import LoginViewModelFactory
@@ -23,16 +24,20 @@ class LoginActivity : AppCompatActivity() {
         // Hide the ActionBar
         supportActionBar?.hide()
 
-        val loginRepository = LoginRepository(this)
         val viewModelFactory = LoginViewModelFactory(applicationContext)
         userViewModel = ViewModelProvider(this, viewModelFactory)[LoginViewModel::class.java]
-        // Si ya está logueado, navegar a HomeActivity
+
+        // Obtener el repositorio y verificar si el usuario ya está logueado
+        val loginRepository = LoginRepository(this)
         if (userViewModel.isLoggedIn()) {
-            val intent = Intent(this, HomeActivity::class.java)
-            intent.putExtra("userName", loginRepository.getUsername())  // Pasar el nombre de usuario
-            startActivity(intent)
-            finish()
-            return
+            val loggedUser = loginRepository.getLoggedUserData()
+            loggedUser?.let {
+                val intent = Intent(this, HomeActivity::class.java)
+                intent.putExtra("userName", it.username)
+                startActivity(intent)
+                finish()
+                return
+            }
         }
 
         val edtCorreo = findViewById<EditText>(R.id.edtCorreo)
@@ -62,8 +67,7 @@ class LoginActivity : AppCompatActivity() {
             loginResponse?.let {
                 Log.d("LoginActivity", "Login successful, navigating to HomeActivity")
                 val intent = Intent(this, HomeActivity::class.java)
-                // Pasar el nombre de usuario al HomeActivity
-                intent.putExtra("userName", loginRepository.getUsername())
+                intent.putExtra("userName", it.username)
                 startActivity(intent)
                 finish()
             }

@@ -7,11 +7,24 @@ import androidx.lifecycle.viewModelScope
 import com.tecsup.prototipo_proyecto.network.response.LoginResponse
 import kotlinx.coroutines.launch
 
+
 class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
 
-    private var authToken: String? = null
     private val _username = MutableLiveData<String>()
     val userName: LiveData<String> get() = _username
+
+    private val _email = MutableLiveData<String>()
+    val email: LiveData<String> get() = _email
+
+    private val _profileImageUrl = MutableLiveData<String>()
+    val profileImageUrl: LiveData<String> get() = _profileImageUrl
+
+    private val _firstName = MutableLiveData<String>()
+    val firstName: LiveData<String> get() = _firstName
+
+    private  val _lastName = MutableLiveData<String>()
+    val lastName: LiveData<String> get() = _lastName
+
     val userLoginError = MutableLiveData<Boolean>()
     val userLoginMsgError = MutableLiveData<String>()
     val error = MutableLiveData<String>()
@@ -20,37 +33,35 @@ class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
     val cliente: LiveData<LoginResponse?> get() = _client
 
     init {
-        fetchUsername()  // Obtener el nombre del usuario en la inicialización
+        fetchUserData()  // Obtener los datos del usuario en la inicialización
     }
 
-    private fun fetchUsername() {
-        _username.value = repository.getUsername() ?: "Usuario"
+    /**
+     * Método para obtener los datos del usuario desde el repositorio.
+     */
+    private fun fetchUserData() {
+        val loggedUser = repository.getLoggedUserData()
+        _username.value = loggedUser?.username ?: "Usuario"
+        _email.value = loggedUser?.email ?: "Correo electrónico"
+        _profileImageUrl.value = loggedUser?.fotoPerfil ?: "URL de imagen de perfil"
+        _firstName.value = loggedUser?.firstName?: "Nombre"
+        _lastName.value = loggedUser?.lastName?: "Apellido"
     }
 
+    /**
+     * Método para iniciar sesión utilizando correo y contraseña.
+     */
     fun login(email: String, pass: String) {
-        if (email.isEmpty() || pass.isEmpty()) {
-            userLoginError.value = true
-            userLoginMsgError.value = "Ingrese datos"
-        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches() || email.length < 5) {
-            userLoginError.value = true
-            userLoginMsgError.value = "Verifique su correo"
-        } else if (pass.length < 8) {
-            userLoginError.value = true
-            userLoginMsgError.value = "Contraseña debe tener al menos 8 caracteres"
-        } else {
-            loginService(email, pass)
-        }
-    }
-
-    private fun loginService(email: String, pass: String) {
         viewModelScope.launch {
             try {
                 val result = repository.login(email, pass)
                 val loginResponse = result.getOrNull()
                 if (loginResponse != null) {
-                    authToken = loginResponse.token
-                    repository.saveUsername(loginResponse.username)  // Guardar el nombre de usuario
-                    _username.postValue(loginResponse.username)      // Actualizar el LiveData
+                    _username.postValue(loginResponse.username)
+                    _email.postValue(loginResponse.email)
+                    _profileImageUrl.postValue(loginResponse.fotoPerfil)
+                    _firstName.postValue(loginResponse.firstName)
+                    _lastName.postValue(loginResponse.lastName)
                     userLoginError.postValue(false)
                     _client.postValue(loginResponse)
                 } else {
@@ -63,15 +74,23 @@ class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
         }
     }
 
-
+    /**
+     * Método para verificar si el usuario está actualmente logueado.
+     */
     fun isLoggedIn(): Boolean {
         return repository.isLoggedIn()
     }
 
+    /**
+     * Método para cerrar sesión del usuario.
+     */
     fun logout() {
         repository.logout()
     }
 
+    /**
+     * Método para manejar errores durante el proceso de inicio de sesión.
+     */
     private fun handleLoginError(exception: Throwable?) {
         userLoginError.postValue(true)
         userLoginMsgError.postValue(

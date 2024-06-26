@@ -4,22 +4,33 @@ import LoginViewModelFactory
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.squareup.picasso.Picasso
 import com.tecsup.prototipo_proyecto.Favoritos.FavoritesActivity
 import com.tecsup.prototipo_proyecto.auth.LoginActivity
 import com.tecsup.prototipo_proyecto.auth.LoginRepository
 import com.tecsup.prototipo_proyecto.auth.LoginViewModel
 import com.tecsup.prototipo_proyecto.cursos.CursoActivity
+import de.hdodenhof.circleimageview.CircleImageView
 
 class PerfilActivity : AppCompatActivity() {
 
     private var currentScreen: Int? = null
     private lateinit var userViewModel: LoginViewModel
+    private lateinit var tvUsername: TextView
+    private lateinit var tvEmail: TextView
+    private lateinit var tvFirstName: TextView
+    private lateinit var tvLastName: TextView
+    private lateinit var tvFotoPerfil: CircleImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +46,17 @@ class PerfilActivity : AppCompatActivity() {
         val loginRepository = LoginRepository(this)
         val viewModelFactory = LoginViewModelFactory(applicationContext)
         userViewModel = ViewModelProvider(this, viewModelFactory)[LoginViewModel::class.java]
+
+        // Inicializar TextViews
+        tvFirstName = findViewById(R.id.txtNombre)
+        tvLastName = findViewById(R.id.txtApellido)
+        tvEmail = findViewById(R.id.txtCorreo)
+        tvFotoPerfil = findViewById(R.id.imgFotoPerfil)
+
+
+
+        // Observar los datos del usuario y actualizar la UI
+        observeUserData()
 
         val btnCerrarSesion = findViewById<Button>(R.id.btnCerrarSesion)
         btnCerrarSesion.setOnClickListener {
@@ -82,6 +104,29 @@ class PerfilActivity : AppCompatActivity() {
             }
         }
         updateBottomNavigation(bottomNav)
+    }
+
+    private fun observeUserData() {
+
+        userViewModel.email.observe(this, Observer { email ->
+            tvEmail.text = email
+        })
+
+        userViewModel.firstName.observe(this, Observer{firstName ->
+            tvFirstName.text = firstName
+        })
+
+        userViewModel.lastName.observe(this, Observer{lastName->
+            tvLastName.text = lastName
+        })
+
+        userViewModel.profileImageUrl.observe(this, Observer { imageUrl ->
+            Picasso.get()
+                .load(imageUrl) // Aquí debes tener la URL de la imagen del usuario
+                .placeholder(R.drawable.placeholder_image) // Opcional: imagen de carga mientras se descarga la imagen real
+                .error(R.drawable.error_image) // Opcional: imagen para mostrar si hay un error al cargar la imagen
+                .into(tvFotoPerfil) // Aquí imgFotoPerfil es tu ImageView donde deseas mostrar la imagen
+        })
     }
 
     override fun onResume() {
