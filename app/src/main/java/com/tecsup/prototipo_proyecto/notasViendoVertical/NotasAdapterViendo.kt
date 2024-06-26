@@ -3,6 +3,7 @@ package com.tecsup.tecsupapp.notas
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.tecsup.prototipo_proyecto.notasViendoVertical.NotaViewHolderViendo
 
 class NotasAdapterViendo(val list:List<NotaViendo>): RecyclerView.Adapter<NotaViewHolderViendo>(){
     //Conectar con el ViewHolder(instancia)

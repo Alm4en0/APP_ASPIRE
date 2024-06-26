@@ -1,8 +1,8 @@
 package com.tecsup.prototipo_proyecto.auth
 
+import RetrofitClient
 import android.content.Context
 import android.content.SharedPreferences
-import com.tecsup.prototipo_proyecto.network.RetrofitClient
 import com.tecsup.prototipo_proyecto.network.request.LoginRequest
 import com.tecsup.prototipo_proyecto.network.response.LoginResponse
 import retrofit2.HttpException
@@ -12,7 +12,7 @@ import retrofit2.HttpException
  */
 class LoginRepository(private val context: Context) {
 
-    private val retrofit = RetrofitClient().retrofit
+    private val retrofit = RetrofitClient(context).retrofit
     private val sharedPreferences: SharedPreferences =
         context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
 

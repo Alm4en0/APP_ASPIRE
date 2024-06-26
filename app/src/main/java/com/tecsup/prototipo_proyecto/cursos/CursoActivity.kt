@@ -1,8 +1,8 @@
 package com.tecsup.prototipo_proyecto.cursos
 
+import Curso1Adapter
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.GridLayoutManager
@@ -43,28 +43,15 @@ class CursoActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         val recyclerNotas = findViewById<RecyclerView>(R.id.reciclerCurso)
 
-        val listNotas = listOf(
-            Curso1("Certificado1", "Descripción 1", "1520", "Curso2"),
-            Curso1("Certificado2", "Descripción 2", "1520", "Curso2"),
-            Curso1("Certificado3", "Descripción 3", "1520", "Curso2"),
-            Curso1("Certificado4", "Descripción 4", "1520", "Curso2"),
-            Curso1("Certificado1", "Descripción 1", "1520", "Curso2"),
-            Curso1("Certificado2", "Descripción 2", "1520", "Curso2"),
-            Curso1("Certificado3", "Descripción 3", "1520", "Curso2"),
-            Curso1("Certificado4", "Descripción 4", "1520", "Curso2")
-        )
 
-        val clickListener = { curso: Curso1 ->
+        val clickListener = { curso: CursoInscripcion ->
             val intent = Intent(this, ModuloCursoActivity::class.java)
-            intent.putExtra("tituloCurso", curso.tituloCurso)
-            intent.putExtra("descripcionCurso", curso.descripcionCurso)
+            intent.putExtra("tituloCurso", curso.curso_nombre)
+            intent.putExtra("descripcionCurso", curso.categoria_nombre)
             // Puedes agregar más datos del curso aquí
             startActivity(intent)
         }
 
-        val adapter = Curso1Adapter(listNotas, clickListener)
-        recyclerNotas.adapter = adapter
-        recyclerNotas.layoutManager = GridLayoutManager(this, 1)
 
     }
 

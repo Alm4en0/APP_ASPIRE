@@ -19,5 +19,6 @@ data class LoginResponse (
     var lastName: String,
 
     @SerializedName("foto_perfil")
-    var fotoPerfil: String
+    var
+    fotoPerfil: String
 )

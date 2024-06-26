@@ -25,7 +25,7 @@
             app:cardCornerRadius="25dp">
 
             <ImageView
-                android:id="@+id/imgHorizontal"
+                android:id="@+id/imgCurso"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -34,7 +34,7 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/txtTituloNotasViendoHorizontal"
+            android:id="@+id/txtTituloCurso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"

@@ -1,31 +1,34 @@
 package com.tecsup.prototipo_proyecto.cursos
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
+import android.view.View
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import com.tecsup.prototipo_proyecto.R
 
-class Curso1ViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
-    RecyclerView.ViewHolder(inflater.inflate(R.layout.item_curso, parent, false)) {
-
-    private var txtTitulo: TextView? = null
-    private var txtTiempo: TextView? = null
-    private var txtDescripcion: TextView? = null
+class Curso1ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    private lateinit var cursoNombre: TextView
+    private lateinit var cursoImagen: ImageView
+    private lateinit var categoriaNombre: Button
 
     init {
-        txtTitulo = itemView.findViewById(R.id.txtTitulo)
-        txtTiempo = itemView.findViewById(R.id.txtTiempo)
-        txtDescripcion = itemView.findViewById(R.id.txtDescripcion)
+        cursoNombre = itemView.findViewById(R.id.txtTituloCurso)
+        cursoImagen = itemView.findViewById(R.id.imgCurso)
+        categoriaNombre = itemView.findViewById(R.id.btnCategoria)
     }
 
-    fun bind(curso: Curso1, clickListener: (Curso1) -> Unit) {
-        txtTitulo?.text = curso.tituloCurso
-        txtTiempo?.text = curso.tiempo
-        txtDescripcion?.text = curso.descripcionCurso
+    fun data(curso: CursoInscripcion, clickListener: (CursoInscripcion) -> Unit) {
+        cursoNombre.text = curso.curso_nombre
+        categoriaNombre.text = curso.categoria_nombre
+        if (cursoImagen != null) {
+            Picasso.get().load(curso.curso_imagen).into(cursoImagen)
+        }
 
         itemView.setOnClickListener {
             clickListener(curso)
         }
     }
 }
+

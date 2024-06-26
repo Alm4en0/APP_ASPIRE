@@ -23,7 +23,7 @@ class CursoViewHolder (inflater: LayoutInflater, parent: ViewGroup):
 
     }
 
-    fun data(nota: Curso1){
+    fun data(nota: CursoInscripcion){
         txtTitulo?.text = nota.tituloCurso
         txtTiempo?.text = nota.tiempo
         txtnumeroCurso?.text = nota.numeroCurso

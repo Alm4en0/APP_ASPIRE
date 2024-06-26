@@ -1,9 +1,12 @@
 // HomeActivity.kt
 package com.tecsup.prototipo_proyecto
 
+import Curso1Adapter
 import LoginViewModelFactory
+import RetrofitClient
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -17,14 +20,20 @@ import com.tecsup.prototipo_proyecto.auth.LoginViewModel
 import com.tecsup.prototipo_proyecto.categorias2.Categoria2
 import com.tecsup.prototipo_proyecto.categorias2.Categoria2Adapter
 import com.tecsup.prototipo_proyecto.cursos.CursoActivity
-import com.tecsup.prototipo_proyecto.notasViendoHorizontal.NotaHorizontal
-import com.tecsup.prototipo_proyecto.notasViendoHorizontal.NotasAdapterHorizontal
+import com.tecsup.prototipo_proyecto.cursos.CursoInscripcion
 import com.tecsup.tecsupapp.notas.NotaViendo
 import com.tecsup.tecsupapp.notas.NotasAdapterViendo
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class HomeActivity : AppCompatActivity() {
 
     private val viewModel: LoginViewModel by viewModels { LoginViewModelFactory(applicationContext) }
+    private lateinit var recyclerNotasHorizontal: RecyclerView
+    private lateinit var recyclerCategorias: RecyclerView
+
     private var currentScreen: Int = HOME_SCREEN
 
     companion object {
@@ -49,6 +58,9 @@ class HomeActivity : AppCompatActivity() {
         viewModel.userName.observe(this, Observer { username ->
             userNameTextView.text = username
         })
+
+        // Fetch courses for the user
+        fetchUserCourses()
     }
 
     private fun setupUIComponents() {
@@ -59,7 +71,7 @@ class HomeActivity : AppCompatActivity() {
             NotaViendo("Scrum", "Cesar Zavaleta", "7 Semanas"),
             NotaViendo("POO", "Walter Moncada", "7 Semanas"),
             NotaViendo("Humanidades", "Omar Castañeda", "7 Semanas"),
-            NotaViendo("Scram", "Cesar Zavaleta", "7 Semanas"),
+            NotaViendo("Scrum", "Cesar Zavaleta", "7 Semanas"),
             NotaViendo("POO", "Walter Moncada", "7 Semanas")
         )
         val adapter = NotasAdapterViendo(listNotas)
@@ -67,32 +79,14 @@ class HomeActivity : AppCompatActivity() {
         recyclerNotas.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         // Initialize RecyclerView for horizontal notes
-        val recyclerNotasHorizontal = findViewById<RecyclerView>(R.id.recyclerNotasViendoHorizontal)
-        val listNotas2 = listOf(
-            NotaHorizontal("Diseño de Interfaces", "https://img.freepik.com/fotos-premium/casa-mano-humana-fondo_488220-5956.jpg?w=996"),
-            NotaHorizontal("Diseño de Interfaces", "https://img.freepik.com/fotos-premium/casa-mano-humana-fondo_488220-5956.jpg?w=996"),
-            NotaHorizontal("Diseño de Interfaces", "https://img.freepik.com/fotos-premium/casa-mano-humana-fondo_488220-5956.jpg?w=996"),
-            NotaHorizontal("Diseño de Interfaces", "https://img.freepik.com/fotos-premium/casa-mano-humana-fondo_488220-5956.jpg?w=996"),
-            NotaHorizontal("Diseño de Interfaces", "https://img.freepik.com/fotos-premium/casa-mano-humana-fondo_488220-5956.jpg?w=996")
-        )
-        val adapter2 = NotasAdapterHorizontal(listNotas2)
-        recyclerNotasHorizontal.adapter = adapter2
+        recyclerNotasHorizontal = findViewById(R.id.recyclerNotasViendoHorizontal)
         recyclerNotasHorizontal.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        // Recycler Categorias
-        val recyclerCategorias = findViewById<RecyclerView>(R.id.recyclerCategorias)
-        val listCategorias = listOf(
-            Categoria2("Finanzas"),
-            Categoria2("Desarrollo Personal"),
-            Categoria2("Bienes Raíces"),
-            Categoria2("Finanzas"),
-            Categoria2("Finanzas"),
-            Categoria2("Finanzas")
-        )
-
-        val adapter2Categoria = Categoria2Adapter(listCategorias)
-        recyclerCategorias.adapter = adapter2Categoria
+        // Initialize RecyclerView for categories
+        recyclerCategorias = findViewById(R.id.recyclerCategorias)
         recyclerCategorias.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        fetchUserCourses()
 
         // Setup BottomNavigationView
         setupBottomNavigationView()
@@ -147,6 +141,62 @@ class HomeActivity : AppCompatActivity() {
                 bottomNav.menu.getItem(screen).isChecked = true
                 bottomNav.menu.getItem(screen).isEnabled = false
             }
+        }
+    }
+
+    private fun fetchUserCourses() {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val response = RetrofitClient(applicationContext).retrofit.getUserCourses()
+                withContext(Dispatchers.Main) {
+                    if (response.isSuccessful) {
+                        val cursos = response.body() ?: emptyList()
+                        withContext(Dispatchers.Main) {
+                            Log.d("HomeActivity", "Cursos recibidos: $cursos")
+                            setupRecyclerViews(cursos)
+                        }
+                    } else {
+                        when (response.code()) {
+                            401 -> {
+                                Log.e(
+                                    "HomeActivity",
+                                    "Error de autenticación. Redirigiendo a login."
+                                )
+                                withContext(Dispatchers.Main) {
+                                    // Redirect to login screen
+                                    // startActivity(Intent(this@HomeActivity, LoginActivity::class.java))
+                                    // finish()
+                                }
+                            }
+
+                            else -> Log.e(
+                                "HomeActivity",
+                                "Error en la respuesta: ${response.errorBody()?.string()}"
+                            )
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                Log.e("HomeActivity", "Excepción: ${e.message}")
+            }
+        }
+    }
+
+    private fun setupRecyclerViews(cursos: List<CursoInscripcion>) {
+        if (cursos.isNotEmpty()) {
+            // Setup RecyclerView for horizontal notes
+            val adapterHorizontal = Curso1Adapter(cursos) { curso ->
+                // Handle item click
+                Log.d("HomeActivity", "Curso clickeado: $curso") // Debugging
+            }
+            recyclerNotasHorizontal.adapter = adapterHorizontal
+
+            // Extract categories from courses
+            val categorias = cursos.map { Categoria2(it.categoria_nombre) }.distinctBy { it.nombre }
+            val adapterCategorias = Categoria2Adapter(categorias)
+            recyclerCategorias.adapter = adapterCategorias
+        } else {
+            Log.d("HomeActivity", "No se encontraron cursos para mostrar.") // Debugging
         }
     }
 }

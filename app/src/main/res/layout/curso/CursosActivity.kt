@@ -15,10 +15,10 @@ class CursosActivity : AppCompatActivity() {
         val recyclerNotas = findViewById<RecyclerView>(R.id.reciclerCurso)
 
         val listNotas = listOf(
-            Curso1("Certificado1","asdasdasdasdasdasdasd","1520","Curso2"),
-            Curso1("Certificado2","asdasdasdasdasdasdasd","1520","Curso2"),
-            Curso1("Certificado3","asdasdasdasdasdasdasd","1520","Curso2"),
-            Curso1("Certificado4","asdasdasdasdasdasdasd","1520","Curso2"),
+            CursoInscripcion("Certificado1","asdasdasdasdasdasdasd","1520","Curso2"),
+            CursoInscripcion("Certificado2","asdasdasdasdasdasdasd","1520","Curso2"),
+            CursoInscripcion("Certificado3","asdasdasdasdasdasdasd","1520","Curso2"),
+            CursoInscripcion("Certificado4","asdasdasdasdasdasdasd","1520","Curso2"),
 
 
 

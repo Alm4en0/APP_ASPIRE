@@ -1,23 +1,29 @@
-package com.tecsup.prototipo_proyecto.cursos
-
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
+import com.tecsup.prototipo_proyecto.R
+import com.tecsup.prototipo_proyecto.cursos.Curso1ViewHolder
+import com.tecsup.prototipo_proyecto.cursos.CursoInscripcion
 
 class Curso1Adapter(
-    private val list: List<Curso1>,
-    private val clickListener: (Curso1) -> Unit
+    private val cursos: List<CursoInscripcion>,
+    private val clickListener: (CursoInscripcion) -> Unit
 ) : RecyclerView.Adapter<Curso1ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Curso1ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return Curso1ViewHolder(inflater, parent)
+        return Curso1ViewHolder(inflater.inflate(R.layout.item_curso, parent, false))
     }
 
     override fun onBindViewHolder(holder: Curso1ViewHolder, position: Int) {
-        val nota = list[position]
-        holder.bind(nota, clickListener)
+        val curso = cursos[position]
+        holder.data(curso, clickListener)
     }
 
-    override fun getItemCount(): Int = list.size
+    override fun getItemCount() = cursos.size
 }
+
