@@ -91,7 +91,7 @@ class HomeActivity : AppCompatActivity() {
         // Setup BottomNavigationView
         setupBottomNavigationView()
 
-        // "Ver Todo" button action
+        
         val txtVerTodo = findViewById<TextView>(R.id.txtVerTodo)
         txtVerTodo.setOnClickListener {
             val intent = Intent(this, CursoActivity::class.java)
