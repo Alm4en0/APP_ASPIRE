@@ -28,4 +28,3 @@ class Curso1ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         }
     }
 }
-

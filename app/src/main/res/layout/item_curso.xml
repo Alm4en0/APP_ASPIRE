@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="350dp"
-    android:layout_height="95dp"
+    android:layout_height="115dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     app:cardCornerRadius="30dp"
     android:layout_marginTop="15dp"
     android:backgroundTint="@color/white">
 
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="20dp"
-        android:layout_gravity="right|center"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="14dp"
-        android:src="@drawable/lupa"/>
 
     <Button
         android:id="@+id/btnVerModulo"
@@ -33,7 +26,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center|left"
         android:orientation="vertical"
-        android:layout_marginLeft="15dp">
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,15 +38,18 @@
             <TextView
                 android:id="@+id/txtTitulo"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
                 android:text="Titulo1"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textSize="15sp"/>
+                android:textSize="18sp"/>
             <TextView
                 android:id="@+id/txtDescripcion"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="2"
+                android:ellipsize="end"
                 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla interdum."
                 android:textSize="12sp"
                 android:textColor="@color/black"/>
@@ -69,6 +67,7 @@
                 android:text="00:00:00"
                 android:textSize="9sp"
                 android:layout_gravity="center"
+                android:layout_marginStart="10dp"
                 android:textColor="@color/design_default_color_error"/>
         </LinearLayout>
 

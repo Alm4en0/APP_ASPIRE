@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="330dp"
-    android:layout_height="87dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_marginTop="15dp"
+    android:layout_marginTop="25dp"
     android:backgroundTint="@color/fondo"
     android:background="@color/fondo">
 
@@ -12,48 +12,49 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:paddingEnd="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="center">
+            android:paddingBottom="10dp"
+            android:gravity="center_vertical">
 
+            <!-- Contenedor del botón de play y el texto -->
             <LinearLayout
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center|left"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="horizontal"
-                android:layout_marginLeft="15dp">
+                android:layout_marginLeft="25dp"
+                android:gravity="center_vertical">
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/btnPlay"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:src="@drawable/icon_play2"
-                    app:fabCustomSize="50dp"
+                    app:fabCustomSize="60dp"
                     app:backgroundTint="@color/azul_claro"
                     android:background="@color/azul_claro"
                     app:tint="@color/white"
                     app:fabSize="mini"/>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:gravity="start"
-                    android:layout_gravity="center">
+                    android:layout_marginLeft="10dp">
+
                     <TextView
                         android:id="@+id/txtTituloFavoritos"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Titulo de Video"
-                        android:textSize="15sp"
+                        android:textSize="20sp"
                         android:textStyle="bold"
-                        android:layout_gravity="start|top"
-                        android:layout_marginLeft="10dp"
                         android:textColor="@color/white"/>
 
                     <TextView
@@ -61,37 +62,29 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Descripcion breve del video"
-                        android:textSize="10sp"
-                        android:layout_gravity="start|bottom"
-                        android:layout_marginLeft="10dp"
+                        android:textSize="12sp"
                         android:ellipsize="end"
                         android:maxLines="2"
                         android:textColor="@color/plomo_claro2"/>
                 </LinearLayout>
-
             </LinearLayout>
 
+            <!-- Botón de corazón al final -->
             <ImageButton
                 android:id="@+id/imbFavorite"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_gravity="center"
                 android:backgroundTint="@android:color/transparent"
                 android:padding="8dp"
                 android:src="@drawable/icono_favorite"
                 app:tint="@color/white"/>
-
-
         </LinearLayout>
-
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="20dp"
+            android:layout_marginStart="25dp"
             android:background="@color/plomo_claro"/>
-
-
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>

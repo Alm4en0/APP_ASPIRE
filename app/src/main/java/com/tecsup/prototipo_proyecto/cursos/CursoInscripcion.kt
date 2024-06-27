@@ -8,6 +8,7 @@ data class CursoInscripcion (
     val curso_imagen: String,
     val categoria_nombre: String,
     val subcategoria_nombre: String,
-    val fecha_registro: String
+    val fecha_registro: String,
+    val curso_detalles: CursoDetalles
 
     )

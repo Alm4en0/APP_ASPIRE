@@ -22,7 +22,7 @@
             android:background="@drawable/rounded_header_background"
             android:gravity="center"
             android:orientation="horizontal"
-            android:paddingTop="50dp"
+            android:paddingTop="40dp"
             android:paddingBottom="20dp">
 
             <LinearLayout
@@ -42,7 +42,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:text="Hola,"
-                        android:textColor="@color/rojo"
+                        android:textColor="@color/white"
                         android:textSize="22sp"
                         android:textStyle="bold" />
 
@@ -52,8 +52,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="username"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textColor="@color/rojo"
+                        android:textSize="22sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -68,9 +68,9 @@
             </LinearLayout>
 
             <ImageView
-                android:layout_width="83dp"
-                android:layout_height="65dp"
-                android:src="@drawable/cabeza" />
+                android:layout_width="80dp"
+                android:layout_height="85dp"
+                android:src="@drawable/saludando3" />
         </LinearLayout>
 
         <!-- Main Content Section -->
@@ -137,7 +137,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
