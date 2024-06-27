@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    kotlin("kapt")
     id("kotlin-parcelize")
 }
 
@@ -46,6 +47,9 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
+    implementation("androidx.room:room-ktx:2.6.1")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.squareup.picasso:picasso:2.71828")
     implementation ("de.hdodenhof:circleimageview:3.1.0")

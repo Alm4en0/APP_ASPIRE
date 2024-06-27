@@ -78,7 +78,7 @@
                 android:layout_weight="0.9"
                 android:text="Titulo de Video"
                 android:textColor="@color/white"
-                android:textSize="28sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <ImageButton

@@ -2,8 +2,10 @@ package com.tecsup.prototipo_proyecto.Favoritos
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -11,29 +13,43 @@ import com.tecsup.prototipo_proyecto.HomeActivity
 import com.tecsup.prototipo_proyecto.PerfilActivity
 import com.tecsup.prototipo_proyecto.R
 import com.tecsup.prototipo_proyecto.cursos.CursoActivity
+import com.tecsup.prototipo_proyecto.AppDatabase
+import com.tecsup.prototipo_proyecto.moduloscurso.ModuloCurso
+import com.tecsup.prototipo_proyecto.videoscurso.VideoCursoActivity
 
 class FavoritesActivity : AppCompatActivity() {
 
     private var currentScreen: Int? = null
+    private lateinit var viewModel: FavoritesViewModel
+    private lateinit var favoritesAdapter: FavoritesAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorites)
-        val recyclerNotas = findViewById<RecyclerView>(R.id.recilerFavoritos)
 
-        val listNotas = listOf(
-            Favoritos("Certificado1","asdasdasdasdasdasd"),
-            Favoritos("Certificado2","asdasdasdasdasdasd"),
-            Favoritos("Certificado3","asdasdasdasdasdasd"),
-            Favoritos("Certificado4","asdasdasdasdasdasd"),
+        // Inicializar ViewModel
+        val database = AppDatabase.getDatabase(applicationContext)
+        val repository = FavoriteRepository(database.favoriteDao())
+        val factory = FavoritesViewModel.Factory(repository)
+        viewModel = ViewModelProvider(this, factory)[FavoritesViewModel::class.java]
 
+        // Configurar RecyclerView y Adapter
+        val recyclerFavoritos = findViewById<RecyclerView>(R.id.recilerFavoritos)
+        favoritesAdapter = FavoritesAdapter(
+            onPlayClick = { favorite -> playVideo(favorite) },
+            onFavoriteClick = { favorite ->
+                viewModel.removeFavorite(favorite)
+                Toast.makeText(this@FavoritesActivity, "Eliminado de Favoritos", Toast.LENGTH_SHORT).show()
+            }
+        )
+        recyclerFavoritos.adapter = favoritesAdapter
+        recyclerFavoritos.layoutManager = GridLayoutManager(this, 1)
 
+        // Observar cambios en la lista de favoritos
+        viewModel.allFavorites.observe(this) { favorites ->
+            favoritesAdapter.submitList(favorites)
+        }
 
-            )
-
-        val adapter = FavoritosAdapter(listNotas)
-        recyclerNotas.adapter = adapter
-        //recyclerNotas.layoutManager=LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        recyclerNotas.layoutManager= GridLayoutManager(this,1)
         // Configuración del Toolbar como ActionBar
         val toolbar: Toolbar = findViewById(R.id.toolbarCursos)
         setSupportActionBar(toolbar)
@@ -47,6 +63,30 @@ class FavoritesActivity : AppCompatActivity() {
 
         // Configuración del BottomNavigationView
         setupBottomNavigationView()
+    }
+
+    private fun playVideo(favorite: Favorite) {
+        val intent = Intent(this, VideoCursoActivity::class.java).apply {
+            putExtra("VIDEO_TITLE", favorite.title)
+            putExtra("VIDEO_DESCRIPTION", favorite.description)
+            putExtra("VIDEO_URL", favorite.videoUrl)
+            putExtra("CURRENT_POSITION", 0)
+            putExtra("cursoId", favorite.moduleId)
+            putExtra("FROM_FAVORITES", true)
+
+            // Crear una lista con un solo elemento para mantener la consistencia
+            val singleModuleList = listOf(
+                ModuloCurso(
+                    id = favorite.moduleId,
+                    nombre = favorite.title,
+                    descripcion = favorite.description,
+                    link = favorite.videoUrl,
+                    duracion = null
+                )
+            )
+            putParcelableArrayListExtra("MODULOS_LIST", ArrayList(singleModuleList))
+        }
+        startActivity(intent)
     }
 
     override fun onSupportNavigateUp(): Boolean {
