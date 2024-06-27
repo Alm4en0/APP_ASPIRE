@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:padding="5dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,20 +27,15 @@
             android:gravity="start|center_vertical"
             android:textStyle="bold"/>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            android:layout_gravity="center|left"
-            android:backgroundTint="#2e3c52"
-            app:cardCornerRadius="15dp">
-            <ImageView
-                android:id="@+id/imgCategoria"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/cabeza"
-                android:layout_gravity="center"
-                />
-        </androidx.cardview.widget.CardView>
+        <ImageButton
+            android:id="@+id/imbFavorite"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:backgroundTint="@android:color/transparent"
+            android:padding="8dp"
+            android:src="@drawable/icon_downloand"
+            app:tint="@color/white"/>
+
     </LinearLayout>
 
     <ImageView

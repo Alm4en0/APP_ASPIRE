@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tecsup.prototipo_proyecto.R
 
 class DescargasViewHolder (inflater: LayoutInflater, parent: ViewGroup):
-    RecyclerView.ViewHolder(inflater.inflate(R.layout.item_introduccion, parent, false)){
+    RecyclerView.ViewHolder(inflater.inflate(R.layout.item_descarga, parent, false)){
 
     private var txtTituloDescargas: TextView? = null
 

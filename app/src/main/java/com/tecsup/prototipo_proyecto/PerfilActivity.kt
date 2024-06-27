@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
@@ -15,6 +16,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.squareup.picasso.Picasso
+import com.tecsup.prototipo_proyecto.Descargas.DescargasActivity
 import com.tecsup.prototipo_proyecto.Favoritos.FavoritesActivity
 import com.tecsup.prototipo_proyecto.auth.LoginActivity
 import com.tecsup.prototipo_proyecto.auth.LoginRepository
@@ -66,6 +68,13 @@ class PerfilActivity : AppCompatActivity() {
         val btnEditarPerfil = findViewById<Button>(R.id.btnEditarPerfil)
         btnEditarPerfil.setOnClickListener {
             val intent = Intent(this, EditarPerfilActivity::class.java)
+            intent.putExtra("currentScreen", currentScreen)
+            startActivity(intent)
+        }
+
+        val btnDescargas = findViewById<ImageButton>(R.id.imbFlecha1)
+        btnDescargas.setOnClickListener {
+            val intent = Intent(this, DescargasActivity::class.java)
             intent.putExtra("currentScreen", currentScreen)
             startActivity(intent)
         }

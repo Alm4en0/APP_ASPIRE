@@ -18,7 +18,7 @@
         android:theme="@style/Base.Theme.Prototipoproyecto"
         tools:targetApi="31">
         <activity
-            android:name=".DescargarRecursosActivity"
+            android:name=".Descargas.DescargasActivity"
             android:exported="false" />
         <activity
             android:name=".Favoritos.FavoritesActivity"
