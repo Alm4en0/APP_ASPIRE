@@ -10,22 +10,18 @@ import com.tecsup.prototipo_proyecto.R
 class ModuloCursoViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     RecyclerView.ViewHolder(inflater.inflate(R.layout.item_modulo_curso, parent, false)) {
 
-    private var txtTituloCurso: TextView? = null
-    private var txtDescripcionCurso: TextView? = null
-    private val tituloTextView: TextView = itemView.findViewById(R.id.txtTituloCurso)
-    private val descripcionTextView: TextView = itemView.findViewById(R.id.txtDescripcionCurso)
-    val btnPlay: FloatingActionButton = itemView.findViewById(R.id.btnPlay)
-
+    private val txtTituloCurso: TextView
+    private val txtDescripcionCurso: TextView
+    val btnPlay: FloatingActionButton
 
     init {
-        txtTituloCurso = itemView.findViewById(R.id.txtTituloCurso)
-        txtDescripcionCurso = itemView.findViewById(R.id.txtDescripcionCurso)
+        txtTituloCurso = itemView.findViewById(R.id.txtTituloModulo)
+        txtDescripcionCurso = itemView.findViewById(R.id.txtDescripcionModulo)
+        btnPlay = itemView.findViewById(R.id.btnPlay)
     }
 
     fun data(moduloCurso: ModuloCurso) {
-        txtTituloCurso?.text = moduloCurso.titulo
-        txtDescripcionCurso?.text = moduloCurso.descripcion
-        tituloTextView.text = moduloCurso.titulo
-        descripcionTextView.text = moduloCurso.descripcion
+        txtTituloCurso.text = moduloCurso.nombre
+        txtDescripcionCurso.text = moduloCurso.descripcion ?: "Sin descripción"
     }
 }

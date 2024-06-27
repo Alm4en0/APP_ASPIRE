@@ -98,14 +98,13 @@
             android:id="@+id/txtDescripcionModulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Descripcion breve del video lalalala
-            lalala lalala lalal k lalal lalal lalala lalal"
+            android:text="D"
             android:textSize="15sp"
             android:layout_gravity="start|bottom"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:ellipsize="end"
-            android:maxLines="2"
+            android:maxLines="6"
             android:textColor="@color/plomo_claro2"/>
     </LinearLayout>
 

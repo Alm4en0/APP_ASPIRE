@@ -4,6 +4,7 @@ import Curso2Adapter
 import RetrofitClient
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -56,15 +57,23 @@ class CursoActivity : AppCompatActivity() {
         loadUserCourses()
     }
 
+    override fun onResume() {
+        super.onResume()
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNav.selectedItemId = R.id.circleplay
+        currentScreen = HomeActivity.COURSE_SCREEN
+        updateBottomNavigation(bottomNav)
+    }
+
     private fun setupRecyclerView() {
         recyclerCursos = findViewById(R.id.reciclerCurso)
         recyclerCursos.layoutManager = LinearLayoutManager(this)
-        cursoAdapter = Curso2Adapter(emptyList(), { curso ->
+        cursoAdapter = Curso2Adapter(emptyList(), { cursoId ->
+            // Verificar que el curso tenga un id válido
+            Log.d("CursoActivity", "Curso seleccionado: $cursoId")
             // Al hacer clic en un curso, abrir la actividad de módulos del curso
             val intent = Intent(this, ModuloCursoActivity::class.java)
-            intent.putExtra("tituloCurso", curso.curso_nombre)
-            intent.putExtra("descripcionCurso", curso.curso_detalles.descripcion)
-            // Puedes agregar más datos del curso aquí
+            intent.putExtra("cursoId", cursoId) // Aquí pasas el cursoId directamente
             startActivity(intent)
         })
         recyclerCursos.adapter = cursoAdapter

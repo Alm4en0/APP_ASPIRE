@@ -20,7 +20,7 @@ class Curso2ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         verModuloButton = itemView.findViewById(R.id.btnVerModulo)
     }
 
-    fun data(curso: CursoInscripcion, clickListener: (CursoInscripcion) -> Unit) {
+    fun data(curso: CursoInscripcion, clickListener: (Int) -> Unit) {
         tituloTextView.text = curso.curso_nombre
         descripcionTextView.text = curso.curso_detalles.descripcion
         duracionTextView.text = curso.curso_detalles.duracion
@@ -28,7 +28,7 @@ class Curso2ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         // Configurar el click listener para el botón
         verModuloButton.setOnClickListener {
-            clickListener(curso)
+            clickListener(curso.curso)
         }
     }
 }

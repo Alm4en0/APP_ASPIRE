@@ -7,7 +7,7 @@ import com.tecsup.prototipo_proyecto.cursos.CursoInscripcion
 
 class Curso2Adapter(
     private var cursos: List<CursoInscripcion>,
-    private val clickListener: (CursoInscripcion) -> Unit
+    private val clickListener: (Int) -> Unit // Cambia para que pase el ID del curso
 ) : RecyclerView.Adapter<Curso2ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Curso2ViewHolder {
@@ -27,3 +27,4 @@ class Curso2Adapter(
         notifyDataSetChanged()
     }
 }
+

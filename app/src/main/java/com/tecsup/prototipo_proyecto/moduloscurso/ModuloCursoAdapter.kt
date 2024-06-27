@@ -4,9 +4,10 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.tecsup.prototipo_proyecto.R
 import com.tecsup.prototipo_proyecto.videoscurso.VideoCursoActivity
 
-class ModuloCursoAdapter(private val list: List<ModuloCurso>) :
+class ModuloCursoAdapter(private var modulos: List<ModuloCurso>) :
     RecyclerView.Adapter<ModuloCursoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ModuloCursoViewHolder {
@@ -15,20 +16,26 @@ class ModuloCursoAdapter(private val list: List<ModuloCurso>) :
     }
 
     override fun onBindViewHolder(holder: ModuloCursoViewHolder, position: Int) {
-        val moduloCurso = list[position]
+        val moduloCurso = modulos[position]
         holder.data(moduloCurso)
 
         holder.btnPlay.setOnClickListener {
             val context = holder.itemView.context
             val intent = Intent(context, VideoCursoActivity::class.java).apply {
-                putExtra("VIDEO_TITLE", moduloCurso.titulo)
-                putExtra("VIDEO_DESCRIPTION", moduloCurso.descripcion)
+                putExtra("VIDEO_TITLE", moduloCurso.nombre)
+                putExtra("VIDEO_DESCRIPTION", moduloCurso.descripcion ?: "Sin descripción")
+                putExtra("VIDEO_URL", moduloCurso.link)
             }
             context.startActivity(intent)
         }
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return modulos.size
+    }
+
+    fun updateModulos(newModulos: List<ModuloCurso>) {
+        modulos = newModulos
+        notifyDataSetChanged()
     }
 }

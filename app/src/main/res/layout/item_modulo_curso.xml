@@ -6,7 +6,8 @@
     android:layout_gravity="center"
     android:layout_marginTop="25dp"
     android:backgroundTint="@color/fondo"
-    android:background="@color/fondo">
+    android:background="@color/fondo"
+    android:layout_marginEnd="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,23 +41,24 @@
                 android:gravity="start"
                 android:layout_gravity="center">
                 <TextView
-                    android:id="@+id/txtTituloCurso"
+                    android:id="@+id/txtTituloModulo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Titulo de Video"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_gravity="start|top"
                     android:layout_marginLeft="10dp"
                     android:textColor="@color/white"/>
 
                 <TextView
-                    android:id="@+id/txtDescripcionCurso"
+                    android:id="@+id/txtDescripcionModulo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Descripcion breve del video"
                     android:textSize="12sp"
                     android:layout_gravity="start|bottom"
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
                     android:ellipsize="end"
                     android:maxLines="2"
