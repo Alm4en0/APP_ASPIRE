@@ -15,6 +15,7 @@ class ModuloCursoAdapter(private var modulos: List<ModuloCurso>) :
         return ModuloCursoViewHolder(inflater, parent)
     }
 
+
     override fun onBindViewHolder(holder: ModuloCursoViewHolder, position: Int) {
         val moduloCurso = modulos[position]
         holder.data(moduloCurso)
@@ -25,6 +26,8 @@ class ModuloCursoAdapter(private var modulos: List<ModuloCurso>) :
                 putExtra("VIDEO_TITLE", moduloCurso.nombre)
                 putExtra("VIDEO_DESCRIPTION", moduloCurso.descripcion ?: "Sin descripción")
                 putExtra("VIDEO_URL", moduloCurso.link)
+                putExtra("CURRENT_POSITION", position)
+                putParcelableArrayListExtra("MODULOS_LIST", ArrayList(modulos))
             }
             context.startActivity(intent)
         }

@@ -1,5 +1,9 @@
 package com.tecsup.prototipo_proyecto.moduloscurso
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class ModuloCurso(
     val id: Int,
     val nombre: String,
@@ -7,4 +11,4 @@ data class ModuloCurso(
     val link: String,
     val duracion: String?,
 
-)
+): Parcelable

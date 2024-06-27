@@ -3,12 +3,15 @@ package com.tecsup.prototipo_proyecto.videoscurso
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.tecsup.prototipo_proyecto.HomeActivity
 import com.tecsup.prototipo_proyecto.R
+import com.tecsup.prototipo_proyecto.moduloscurso.ModuloCurso
 import com.tecsup.prototipo_proyecto.moduloscurso.ModuloCursoActivity
 
 class VideoCursoActivity : AppCompatActivity() {
@@ -18,6 +21,10 @@ class VideoCursoActivity : AppCompatActivity() {
     private lateinit var customMediaController: CustomMediaController
     private lateinit var txtTituloModulo: TextView
     private lateinit var txtDescripcionModulo: TextView
+    private lateinit var txtNumeroModulo: TextView
+    private lateinit var btnSiguienteVideo: Button
+    private var currentPosition: Int = 0
+    private lateinit var modulos: List<ModuloCurso>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +44,8 @@ class VideoCursoActivity : AppCompatActivity() {
         customMediaController = findViewById(R.id.customMediaController)
         txtTituloModulo = findViewById(R.id.txtTituloModulo)
         txtDescripcionModulo = findViewById(R.id.txtDescripcionModulo)
+        txtNumeroModulo = findViewById(R.id.txtNumeroModulo)
+        btnSiguienteVideo = findViewById(R.id.btnSiguienteVideo)
 
         // Recibir datos del intent
         val videoTitle = intent.getStringExtra("VIDEO_TITLE") ?: "Título por defecto"
@@ -47,9 +56,26 @@ class VideoCursoActivity : AppCompatActivity() {
         txtTituloModulo.text = videoTitle
         txtDescripcionModulo.text = videoDescription
 
+        cursoId = intent.getIntExtra("cursoId", -1)
+        currentPosition = intent.getIntExtra("CURRENT_POSITION", 0)
+        modulos = intent.getParcelableArrayListExtra("MODULOS_LIST") ?: emptyList()
+
+        loadVideoData(currentPosition)
         // Configurar el VideoView con la URL del video
         setupVideoView(videoUrl)
+
+        btnSiguienteVideo.setOnClickListener {
+            if (currentPosition < modulos.size - 1) {
+                currentPosition++
+                loadVideoData(currentPosition)
+            } else {
+                // Opcional: Mostrar un mensaje de que es el último video
+                Toast.makeText(this, "Este es el último video del módulo", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
+
+
 
     private fun setupVideoView(videoUrl: String) {
         if (videoUrl.isNotEmpty()) {
@@ -61,6 +87,14 @@ class VideoCursoActivity : AppCompatActivity() {
             // Maneja el caso donde la URL del video es inválida o vacía
             txtDescripcionModulo.text = "URL del video no disponible."
         }
+    }
+
+    private fun loadVideoData(position: Int) {
+        val moduloCurso = modulos[position]
+        txtTituloModulo.text = moduloCurso.nombre
+        txtDescripcionModulo.text = moduloCurso.descripcion ?: "Sin descripción"
+        txtNumeroModulo.text = "Módulo ${position + 1}"
+        setupVideoView(moduloCurso.link ?: "")
     }
 
     override fun onSupportNavigateUp(): Boolean {

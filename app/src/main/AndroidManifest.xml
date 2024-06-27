@@ -15,6 +15,7 @@
         android:label="Aspire"
         android:roundIcon="@drawable/logodark"
         android:supportsRtl="true"
+        android:largeHeap="true"
         android:theme="@style/Base.Theme.Prototipoproyecto"
         tools:targetApi="31">
         <activity
