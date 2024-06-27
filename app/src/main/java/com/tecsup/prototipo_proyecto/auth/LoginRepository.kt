@@ -28,31 +28,36 @@ class LoginRepository(private val context: Context) {
      */
     suspend fun login(email: String, pass: String): Result<LoginResponse> {
         return try {
-            val loginRequest = LoginRequest(email, pass)
-            val response = retrofit.login(loginRequest)
+            if (email.isEmpty() || pass.isEmpty()) {
+                Result.failure(Exception("Ingrese datos"))
+            } else {
+                val loginRequest = LoginRequest(email, pass)
+                val response = retrofit.login(loginRequest)
 
-            // Almacenar token y otros datos del usuario en SharedPreferences
-            with(sharedPreferences.edit()) {
-                putString("auth_token", response.token)
-                putString("username", response.username)
-                putString("email", response.email)
-                putString("firstName", response.firstName)
-                putString("lastName", response.lastName)
-                putString("fotoPerfil", response.fotoPerfil)
-                apply()
+                // Almacenar token y otros datos del usuario en SharedPreferences
+                with(sharedPreferences.edit()) {
+                    putString("auth_token", response.token)
+                    putString("username", response.username)
+                    putString("email", response.email)
+                    putString("firstName", response.firstName)
+                    putString("lastName", response.lastName)
+                    putString("fotoPerfil", response.fotoPerfil)
+                    apply()
+                }
+
+                Result.success(response)
             }
-
-            Result.success(response)
         } catch (e: HttpException) {
             when (e.code()) {
-                401 -> Result.failure(Exception("Credenciales incorrectas"))
-                500 -> Result.failure(Exception("Error del servidor"))
-                else -> Result.failure(e)
+                401 -> Result.failure(Exception("Correo Invalido o Contraseña"))
+                500 -> Result.failure(Exception("Error del servidor. Por favor, inténtelo de nuevo más tarde."))
+                else -> Result.failure(Exception("Error: ${e.message()}"))
             }
         } catch (e: Exception) {
-            Result.failure(e)
+            Result.failure(Exception("Error: ${e.message}"))
         }
     }
+
 
     /**
      * Elimina todos los datos del usuario al cerrar sesión.

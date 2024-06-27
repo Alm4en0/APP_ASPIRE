@@ -49,8 +49,11 @@ class VideoCursoActivity : AppCompatActivity() {
     }
 
     private fun setupVideoView() {
-        val videoUri = Uri.parse("android.resource://$packageName/${R.raw.ejemplo2}")
-        videoView.setVideoURI(videoUri)
+        val videoUri = "https://drive.google.com/uc?id=1H_u8E49uJtm_MJQnfjq_vj0EQuinnH3w&export=download"
+        val uri = Uri.parse(videoUri)
+        videoView.setVideoURI(uri)
+
+        videoView.start()
 
         customMediaController.setVideoView(videoView)
         customMediaController.showControls()
