@@ -55,7 +55,6 @@ class FavoritesActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         // Habilitar la flecha de retroceso
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Mis Favoritos"
 
         // Recuperar el valor de currentScreen desde el Intent
@@ -87,13 +86,6 @@ class FavoritesActivity : AppCompatActivity() {
             putParcelableArrayListExtra("MODULOS_LIST", ArrayList(singleModuleList))
         }
         startActivity(intent)
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val intent = Intent(this, HomeActivity::class.java)
-        startActivity(intent)
-        finish()
-        return true
     }
 
     private fun setupBottomNavigationView() {
